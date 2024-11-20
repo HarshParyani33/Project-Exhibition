@@ -7,29 +7,51 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let isPaused = false;
     const duration = 20; // Duration in seconds for one complete scroll
+    let animationFrame;
+    let startTime;
+    let pauseStartTime;
+    let pauseDuration = 0;
     
     function startScrolling() {
-        const height = content.scrollHeight / 2; // Half because we duplicated the content
-        content.style.transition = `transform ${duration}s linear`;
-        content.style.transform = `translateY(-${height}px)`;
+        const height = content.scrollHeight / 2;
         
-        // Reset when complete
-        setTimeout(() => {
-            content.style.transition = 'none';
-            content.style.transform = 'translateY(0)';
-            startScrolling();
-        }, duration * 1000);
+        if (!startTime) startTime = Date.now();
+        
+        function animate() {
+            if (!isPaused) {
+                const currentTime = Date.now();
+                const elapsedTime = currentTime - startTime - pauseDuration;
+                const position = (elapsedTime * height) / (duration * 1000);
+                
+                if (position >= height) {
+                    // Reset animation
+                    startTime = currentTime;
+                    pauseDuration = 0;
+                    content.style.transform = 'translateY(0)';
+                } else {
+                    content.style.transform = `translateY(-${position}px)`;
+                }
+                
+                animationFrame = requestAnimationFrame(animate);
+            }
+        }
+        
+        animate();
     }
     
     // Pause on hover
     const container = document.querySelector('.announcement-container');
     container.addEventListener('mouseenter', () => {
-        content.style.animationPlayState = 'paused';
-        content.style.transition = 'none';
+        isPaused = true;
+        pauseStartTime = Date.now();
+        if (animationFrame) {
+            cancelAnimationFrame(animationFrame);
+        }
     });
     
     container.addEventListener('mouseleave', () => {
-        content.style.animationPlayState = 'running';
+        isPaused = false;
+        pauseDuration += Date.now() - pauseStartTime;
         startScrolling();
     });
     
