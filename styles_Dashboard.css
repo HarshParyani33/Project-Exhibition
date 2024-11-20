@@ -1,0 +1,144 @@
+:root {
+    --primary-green: #2F4F4F;
+    --secondary-green: #3CB371;
+    --light-green: #E8F5E9;
+    --white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: var(--light-green);
+    color: var(--primary-green);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 2rem;
+    background-color: var(--light-green);
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: var(--primary-green);
+    font-weight: bold;
+}
+
+.recruitment-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.domain-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    gap: 40px;
+}
+
+.domain-section:first-child {
+    background-color: #D0FEFF;  /* Lighter navy blue color */
+    padding: 40px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.domain-section:nth-child(2) {
+    background-color: #3254A9;  /* The requested blue color */
+    padding: 40px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.content-left, .content-right {
+    flex: 1;
+}
+
+.section-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h2 {
+    color: var(--secondary-blue);
+    margin-bottom: 1rem;
+}
+
+.card p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.apply-btn {
+    background-color: var(--primary-blue);
+    color: var(--primary-beige);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.apply-btn:hover {
+    background-color: var(--secondary-blue);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+    }
+}
+
+.domain-card {
+    background-color: white;
+    padding: 20px 40px;
+    border-radius: 10px;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.domain-card h2 {
+    color: #1B3B2D;
+    font-size: 2.5em;
+    margin: 0;
+    font-weight: bold;
+}
+
+/* You might want to adjust the text color for better contrast */
+.domain-section:first-child .domain-card h2 {
+    color: #1B3B2D;  /* Keeping the dark green color for the text */
+}
+
+/* Optionally, if you want to ensure text contrast */
+.domain-section:nth-child(2) .domain-card h2 {
+    color: #1B3B2D;  /* Keeping the dark green color for the text */
+}
