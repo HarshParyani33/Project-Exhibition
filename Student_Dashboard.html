@@ -7,11 +7,17 @@
     <link rel="stylesheet" href="styles_Dashboard.css">
 </head>
 <body>
+    <nav>
+        <div class="logo">
+            <img src="Vitlogo.png" alt="VIT Bhopal Logo">
+        </div>
+        <div class="nav-links">
+            <button class="logout-btn">Logout</button>
+            <img src="Profile.png" alt="Profile" class="profile-icon">
+        </div>
+    </nav>
+    
     <div class="container">
-        <header>
-            <h1>Welcome!!!</h1>
-        </header>
-
         <div class="dashboard-layout">
             <!-- Left 8-column section -->
             <div class="main-content">
@@ -22,9 +28,11 @@
                             <img src="Complaints.png" alt="Complaints" class="section-image">
                         </div>
                         <div class="content-right" style="width: 50%;">
-                            <div class="domain-card">
-                                <h2>Complaints</h2>
-                            </div>
+                            <a href="complainpage1.html" class="button-link">
+                                <button class="domain-card complaints-btn">
+                                    <h2>Complaints</h2>
+                                </button>
+                            </a>
                         </div>
                     </section>
 
@@ -36,7 +44,7 @@
                             </div>
                         </div>
                         <div class="content-right" style="width: 50%;">
-                            <img src="Book_appointment.jpg" alt="Appointment Booking" class="section-image">
+                            <img src="Book_appointment.png" alt="Appointment Booking" class="section-image">
                         </div>
                     </section>
 

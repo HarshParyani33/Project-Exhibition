@@ -234,3 +234,117 @@ h1 {
     margin-top: -20px;
     grid-column: 1 / -1;
 }
+
+.complaints-btn {
+    width: 100%;
+    background-color: white;
+    padding: 20px 40px;
+    border-radius: 10px;
+    border: none;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.complaints-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.complaints-btn:active {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.complaints-btn h2 {
+    color: #1B3B2D;
+    font-size: 2.5em;
+    margin: 0;
+    font-weight: bold;
+}
+
+/* Remove the old domain-card styles for this section */
+.domain-section:first-child .domain-card {
+    border: none;
+    padding: 0;
+    box-shadow: none;
+    background: none;
+}
+
+.button-link {
+    text-decoration: none;
+    width: 100%;
+    display: block;
+}
+
+/* Remove button default styles when inside a link */
+.button-link button {
+    width: 100%;
+    cursor: pointer;
+}
+
+/* Optional: Remove outline when clicking */
+.button-link:focus {
+    outline: none;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--white);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--primary-green);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--secondary-green);
+}
+
+.profile-icon {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Remove the old top-nav styles as they're no longer needed */
+.top-nav {
+    display: none;
+}
+
+.logout-btn {
+    background-color: var(--primary-green);
+    color: var(--white);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: var(--secondary-green);
+}
