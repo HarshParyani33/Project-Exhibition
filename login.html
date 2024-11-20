@@ -4,34 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VIT Bhopal - Login</title>
-    <style>
-        *
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="header">
-        <h1>VIT Bhopal</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Courses</a></li>
-                <li><a href="#">Admissions</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">
+            <img src="Vitlogo.png" alt="VIT Bhopal Logo">
+        </div>
+        <div class="nav-links">
+            <a href="#notice">Notice</a>
+            <a href="#complaints">Complains Section</a>
+            <a href="#contact">Contact Details</a>
+            <img src="Profile.png" alt="Profile" class="profile-icon">
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="split-container">
+        <!-- Left Side - Image -->
+        <div class="left-side">
+            <img src="vitphoto.png" alt="VIT Campus" class="campus-image">
+        </div>
+
+        <!-- Right Side - Login -->
+        <div class="right-side">
+            <h1>Sign in as:</h1>
+            
+            <div class="login-options-container">
+                <a href="#student-login" class="login-option student">
+                    <div class="icon">
+                        <img src="Student login.png" alt="Student Icon">
+                    </div>
+                    <span>Student</span>
+                </a>
+
+                <a href="#faculty-login" class="login-option faculty">
+                    <div class="icon">
+                        <img src="Faculty login.png" alt="Faculty Icon">
+                    </div>
+                    <span>Faculty</span>
+                </a>
+            </div>
+        </div>
     </div>
-    <main>
-        <section class="signin">
-            <h2>Sign In</h2>
-            <form>
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-                <button type="submit">Sign In</button>
-            </form>
-        </section>
-    </main>
 </body>
 </html>
