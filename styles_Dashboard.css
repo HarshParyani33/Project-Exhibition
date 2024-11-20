@@ -39,7 +39,7 @@ h1 {
 .recruitment-sections {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 0;
 }
 
 .domain-section {
@@ -53,15 +53,15 @@ h1 {
 .domain-section:first-child {
     background-color: #D0FEFF;  /* Lighter navy blue color */
     padding: 40px;
-    border-radius: 10px;
-    margin: 20px 0;
+    border-radius: 10px 10px 0 0;  /* Rounded corners only on top */
+    margin: 0;  /* Remove margin */
 }
 
 .domain-section:nth-child(2) {
     background-color: #3254A9;  /* The requested blue color */
     padding: 40px;
-    border-radius: 10px;
-    margin: 20px 0;
+    border-radius: 0 0 10px 10px;  /* Rounded corners only on bottom */
+    margin: 0;  /* Remove margin */
 }
 
 .content-left, .content-right {
