@@ -1,48 +1,38 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const container = document.querySelector('.announcement-container');
     const content = document.querySelector('.announcement-content');
     
-    // Calculate the height of a single item
-    const itemHeight = content.querySelector('.announcement-item').offsetHeight;
+    // Clone all announcements and append them to create a seamless loop
+    const originalItems = content.innerHTML;
+    content.innerHTML = originalItems + originalItems;
     
-    // Clone the first item and append it to the end
-    function cloneFirstItem() {
-        const firstItem = content.querySelector('.announcement-item');
-        const clone = firstItem.cloneNode(true);
-        content.appendChild(clone);
-    }
-    
-    let currentPosition = 0;
     let isPaused = false;
+    const duration = 20; // Duration in seconds for one complete scroll
     
-    function scroll() {
-        if (!isPaused) {
-            currentPosition++;
-            content.style.transform = `translateY(-${currentPosition}px)`;
-            
-            // When we've scrolled the height of one item, reset to top
-            if (currentPosition >= itemHeight) {
-                // Move first item to last
-                const firstItem = content.querySelector('.announcement-item');
-                content.appendChild(firstItem);
-                // Reset position
-                currentPosition = 0;
-                content.style.transform = `translateY(0)`;
-            }
-        }
-        requestAnimationFrame(scroll);
+    function startScrolling() {
+        const height = content.scrollHeight / 2; // Half because we duplicated the content
+        content.style.transition = `transform ${duration}s linear`;
+        content.style.transform = `translateY(-${height}px)`;
+        
+        // Reset when complete
+        setTimeout(() => {
+            content.style.transition = 'none';
+            content.style.transform = 'translateY(0)';
+            startScrolling();
+        }, duration * 1000);
     }
-
-    // Start scrolling
-    requestAnimationFrame(scroll);
-
+    
     // Pause on hover
+    const container = document.querySelector('.announcement-container');
     container.addEventListener('mouseenter', () => {
-        isPaused = true;
+        content.style.animationPlayState = 'paused';
+        content.style.transition = 'none';
     });
-
-    // Resume on mouse leave
+    
     container.addEventListener('mouseleave', () => {
-        isPaused = false;
+        content.style.animationPlayState = 'running';
+        startScrolling();
     });
+    
+    // Start the animation
+    startScrolling();
 });

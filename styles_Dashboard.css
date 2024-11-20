@@ -178,51 +178,56 @@ h1 {
 }
 
 .announcement-container {
-    height: 150px;
+    height: 300px;
     overflow: hidden;
     position: relative;
     background: white;
     padding: 0 10px;
 }
 
+.announcement-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.announcement-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.announcement-container::-webkit-scrollbar-thumb {
+    background: #2B579A;
+    border-radius: 4px;
+}
+
+.announcement-container::-webkit-scrollbar-thumb:hover {
+    background: #1d3c6a;
+}
+
 .announcement-content {
     position: relative;
-    width: 100%;
+    will-change: transform;
 }
 
 .announcement-item {
-    padding: 8px 8px 8px 20px;
+    padding: 15px 10px;
     border-bottom: 1px solid #e0e0e0;
-    color: #1B3B2D;
-    font-size: 0.9rem;
-    background: white;
-    position: relative;
+    color: #333;
+    font-size: 1rem;
     line-height: 1.4;
+    background: white;
 }
 
-/* Add bullet points before each announcement */
+/* Remove the bullet points */
 .announcement-item::before {
-    content: "";
-    position: absolute;
-    left: 8px;
-    top: 14px;
-    width: 6px;
-    height: 6px;
-    background-color: #1B3B2D;
-    border-radius: 50%;
+    display: none;
 }
 
-/* Add NEW tag for new announcements */
-.announcement-item::after {
-    content: "NEW";
-    display: inline-block;
-    background-color: #ff0000;
-    color: white;
-    font-size: 0.7rem;
-    padding: 2px 4px;
-    border-radius: 3px;
+/* Update NEW tag styling */
+.announcement-item .new-tag {
+    color: #FF0000;
+    font-weight: bold;
     margin-left: 5px;
-    vertical-align: top;
+    font-size: 0.9rem;
 }
 
 .domain-section:nth-child(3) {
