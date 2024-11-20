@@ -50,18 +50,18 @@ h1 {
     gap: 40px;
 }
 
-.domain-section:first-child {
+.domain-section:first-child, .domain-section:nth-child(3) {
     background-color: #D0FEFF;  /* Lighter navy blue color */
     padding: 40px;
-    border-radius: 10px 10px 0 0;  /* Rounded corners only on top */
-    margin: 0;  /* Remove margin */
+    border-radius: 10px;
+    margin: 0;
 }
 
 .domain-section:nth-child(2) {
-    background-color: #3254A9;  /* The requested blue color */
+    background-color: #3254A9;
     padding: 40px;
-    border-radius: 0 0 10px 10px;  /* Rounded corners only on bottom */
-    margin: 0;  /* Remove margin */
+    border-radius: 10px;
+    margin: 20px 0;  /* Add some spacing between sections */
 }
 
 .content-left, .content-right {
@@ -133,12 +133,36 @@ h1 {
     font-weight: bold;
 }
 
-/* You might want to adjust the text color for better contrast */
-.domain-section:first-child .domain-card h2 {
-    color: #1B3B2D;  /* Keeping the dark green color for the text */
+/* Ensure text color consistency */
+.domain-section:first-child .domain-card h2,
+.domain-section:nth-child(3) .domain-card h2 {
+    color: #1B3B2D;
 }
 
-/* Optionally, if you want to ensure text contrast */
-.domain-section:nth-child(2) .domain-card h2 {
-    color: #1B3B2D;  /* Keeping the dark green color for the text */
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.main-content {
+    grid-column: span 8;
+}
+
+.notice-section {
+    grid-column: span 4;
+}
+
+.notice-box {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    height: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.notice-box h2 {
+    color: #1B3B2D;
+    margin-bottom: 15px;
 }
