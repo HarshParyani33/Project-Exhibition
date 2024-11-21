@@ -187,3 +187,14 @@
   nav {
     margin-right: -20px;
   }
+  
+  .account-icon a {
+    display: block;
+    text-decoration: none;
+  }
+  
+  .account-icon a:hover .profile-pic {
+    border-color: #ecf0f1;
+    transform: scale(1.05);
+    transition: all 0.2s ease;
+  }
