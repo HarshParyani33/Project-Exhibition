@@ -30,15 +30,15 @@ body {
     background-repeat: no-repeat;
     color: black;
     text-align: center;
-    padding: 200px 20px;
+    padding: 100px 20px;
     position: relative;
-    min-height: 600px;
+    min-height: 400px;
 }
 
 .header h1 {
     position: relative;
     z-index: 2;
-    font-size: 4em;
+    font-size: 3em;
     font-weight: bold;
 }
 
@@ -176,7 +176,7 @@ body {
 /* Navigation Styles */
 nav {
     background-color: white;
-    padding: 15px 30px;
+    padding: 10px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -188,7 +188,7 @@ nav {
 }
 
 .logo img {
-    height: 40px;
+    height: 60px;
     width: auto;
 }
 
@@ -248,23 +248,24 @@ nav {
     background-color: #f8f9fa;
     border: 1px solid #ddd;
     border-radius: 5px;
-    padding: 15px;
-    width: 300px;
-    height: 200px;
+    padding: 20px;
+    width: 400px;
+    height: 300px;
     margin-right: 20px;
-    margin-top: 50px;
+    margin-top: 100px;
     position: relative;
-    top: 20px;
+    top: 90px;
 }
 
 .notice-board h4 {
     color: #333;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     text-align: center;
+    font-size: 24px;
 }
 
 .notice-content {
-    height: 150px;
+    height: 250px;
     overflow: hidden;
 }
 
@@ -273,9 +274,35 @@ nav {
 }
 
 .notice-content p {
-    margin: 10px 0;
-    padding: 5px;
+    margin: 12px 0;
+    padding: 8px;
     border-bottom: 1px solid #eee;
+    font-size: 16px;
+}
+
+/* Logo size adjustment */
+.logo img {
+    height: 60px;
+    width: auto;
+}
+
+/* Title size adjustment */
+.nav-title h2 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .logo img {
+        height: 45px;
+    }
+    
+    .nav-title h2 {
+        font-size: 24px;
+    }
 }
 
 
