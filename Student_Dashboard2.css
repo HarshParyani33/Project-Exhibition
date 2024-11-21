@@ -168,6 +168,82 @@ body {
     height: auto;
 }
 
+.button-group a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Navigation Styles */
+nav {
+    background-color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #001958;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #0056b3;
+}
+
+.profile-icon {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Adjust header to account for fixed navbar */
+.header {
+    margin-top: 70px;
+}
+
+/* Make container-fluid account for fixed navbar */
+.container-fluid {
+    padding-top: 70px;
+}
+
+.logout-btn {
+    background-color: #001958;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-left: 20px;  /* Space between profile icon and button */
+}
+
+.logout-btn:hover {
+    background-color: #001245;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
 
 
 
