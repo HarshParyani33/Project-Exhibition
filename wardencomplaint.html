@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hostel Complaint System</title>
+  <link rel="stylesheet" href="wardencomplaint.css">
+</head>
+<body>
+  <header>
+    <h1>Hostel Connect</h1>
+    
+    <button class="logout-btn">Logout</button>
+    
+  </header>
+  
+  <main>
+    <section class="complaints">
+      <h2>Complaints</h2>
+      <div class="complaint-card" id="complaint-1">
+        <h3>Switch is not working (Room No. L block - 27)</h3>
+        <p>Created on Dec 15, 2023</p>
+        <p>I am facing issues with the switch in my room. It is not functioning correctly. I will be there after 1:30 PM.</p>
+        <div class="buttons">
+          <button class="status-btn not-completed" onclick="updateStatus('complaint-1', 'Completed')">Not Completed</button>
+          <button class="delete-btn" onclick="deleteComplaint('complaint-1')">Delete</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
