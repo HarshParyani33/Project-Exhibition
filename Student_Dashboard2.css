@@ -24,7 +24,7 @@ body {
 }
 
 .header {
-    background-image: url('Dashboard Background.png');
+    background-image: url('./images/Dashboard\ Background.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
