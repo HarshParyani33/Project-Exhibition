@@ -24,7 +24,7 @@ body {
 }
 
 .header {
-    background-image: url('./images/Dashboard\ Background.png');
+    background-image: url('Dashboard Background.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -303,6 +303,22 @@ nav {
     .nav-title h2 {
         font-size: 24px;
     }
+}
+
+.profile-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.profile-btn:hover {
+    opacity: 0.8;
+}
+
+.profile-btn a {
+    text-decoration: none;
+    display: block;
 }
 
 
