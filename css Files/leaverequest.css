@@ -41,17 +41,17 @@ body {
 
 .nav {
     display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin: 20px 0;
+    justify-content: space-around;
+    margin-bottom: 20px;
 }
 
 .nav-btn {
+    background: #007BFF;
+    color: #fff;
     padding: 10px 20px;
-    font-size: 16px;
     border: none;
     border-radius: 5px;
-    background-color: #f0f0f0;
+    background-color: #555;
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -119,4 +119,51 @@ textarea {
 
 .nav a {
     text-decoration: none;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.back-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 150px;
+}
+
+.back-btn:hover {
+    background-color: #0056b3;
+}
+
+.button-container a {
+    text-decoration: none;
+}
+
+.back-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back-button button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.back-button button:hover {
+    background-color: #45a049;
 }
