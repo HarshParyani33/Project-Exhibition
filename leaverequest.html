@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Leave Request Screen</title>
+    <link rel="stylesheet" href="leaverequest.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1> Leave Request</h1>
+            <p class="proctor-name">Proctor Name:xyz</p>
+        </header>
+        <nav class="nav">
+            <button class="nav-btn active">Leave Request</button>
+            <button class="nav-btn">Leave Status</button>
+            <button class="nav-btn">Leave History</button>
+        </nav>
+        <form class="leave-form">
+            <div class="form-group">
+                <label for="leaveType">Leave Type</label>
+                <select id="leaveType" name="leaveType" required>
+                    <option value="">- Select -</option>
+                    <option value="sick">Sick Leave</option>
+                    <option value="casual">Casual Leave</option>
+                    <option value="emergency">Emergency Leave</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="visitingPlace">Visiting Place</label>
+                <input type="text" id="visitingPlace" name="visitingPlace" placeholder="Enter visiting place" required>
+            </div>
+            <div class="form-group">
+                <label for="reason">Reason</label>
+                <textarea id="reason" name="reason" placeholder="Enter the reason for leave" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="fromDate">From Date</label>
+                <input type="date" id="fromDate" name="fromDate" required>
+            </div>
+            <div class="form-group">
+                <label for="timeFrom">Time From</label>
+                <input type="time" id="timeFrom" name="timeFrom" required>
+            </div>
+            <div class="form-group">
+                <label for="toDate">To Date</label>
+                <input type="date" id="toDate" name="toDate" required>
+            </div>
+            <div class="form-group">
+                <label for="timeTo">Time To</label>
+                <input type="time" id="timeTo" name="timeTo" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="submit-btn">Submit Leave Application</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
