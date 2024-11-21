@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: beige;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+.row {
+    margin: 0;
+}
+
+.section {
+    margin-bottom: 30px;
+    padding: 40px 20px;
+    width: 100%;
+}
+
+.header {
+    background-color: #001958;
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.content-section {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.content-section1, .content-section3 {
+    background-color: beige;
+    color:#001958
+}
+.content-section2{
+    background-color: #001958;
+    color: beige;
+}
+
+.section-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 20px;
+    gap: 60px;
+}
+
+.text-content {
+    flex: 1;
+}
+
+.text-content p {
+    font-size: 1.1em;
+    margin-top: 10px;
+}
+
+.content-section1 .button-group,
+.content-section3 .button-group {
+    margin: 0 20px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    width: 600px;
+}
+
+.dashboard-btn {
+    background-color: #001958;
+    color: white;
+    border: none;
+    padding: 35px 70px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 3.5em;
+    font-weight: 800;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    width: 600px;
+    height: 200px;
+    letter-spacing: 2px;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.dashboard-btn::before,
+.dashboard-btn::after {
+    content: '';
+    width: 80%;
+    height: 2px;
+    background-color: currentColor;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dashboard-btn::before {
+    top: 20px;
+}
+
+.dashboard-btn::after {
+    bottom: 20px;
+}
+
+.content-section2 .dashboard-btn::before,
+.content-section2 .dashboard-btn::after {
+    background-color: #001958;
+}
+
+.dashboard-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.content-section2 .dashboard-btn {
+    background-color: white;
+    color: #001958;
+}
+
+.content-section2 .section-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.content-section2 .image-content {
+    flex: 1;
+    text-align: right;
+    padding-left: 20px;
+}
+
+.content-section2 .button-group {
+    margin-right: 20px;
+}
+
+.image-content {
+    flex: 1;
+    max-width: 45%;
+}
+
+.section-image {
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+
+
