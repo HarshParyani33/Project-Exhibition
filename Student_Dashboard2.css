@@ -24,10 +24,22 @@ body {
 }
 
 .header {
-    background-color: #001958;
-    color: white;
+    background-image: url('Dashboard Background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: black;
     text-align: center;
-    padding: 80px 20px;
+    padding: 200px 20px;
+    position: relative;
+    min-height: 600px;
+}
+
+.header h1 {
+    position: relative;
+    z-index: 2;
+    font-size: 4em;
+    font-weight: bold;
 }
 
 .content-section {
@@ -76,15 +88,15 @@ body {
     background-color: #001958;
     color: white;
     border: none;
-    padding: 35px 70px;
+    padding: 20px;
     border-radius: 12px;
     cursor: pointer;
     font-size: 3.5em;
     font-weight: 800;
     text-transform: uppercase;
     transition: all 0.3s ease;
-    width: 600px;
-    height: 200px;
+    width: 500px;
+    height: 300px;
     letter-spacing: 2px;
     text-align: center;
     position: relative;
