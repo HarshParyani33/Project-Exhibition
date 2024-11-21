@@ -84,3 +84,9 @@ main {
 .back-btn:hover {
     background-color: #0056b3;
 }
+
+.back-btn a {
+    text-decoration: none;
+    color: inherit;  /* This will make the link color match the button text color */
+    display: block;
+}
