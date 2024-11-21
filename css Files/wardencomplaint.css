@@ -109,3 +109,31 @@ body {
     background-color: #a71d2a;
   }
   
+  .nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .profile-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  .profile-btn a {
+    text-decoration: none;
+    display: block;
+  }
+  
+  .profile-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  .profile-btn:hover {
+    opacity: 0.8;
+  }
+  
