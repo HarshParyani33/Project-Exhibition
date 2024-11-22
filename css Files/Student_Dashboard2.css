@@ -47,11 +47,14 @@ body {
 .content-section {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-.content-section1, .content-section3 {
+
+.content-section1,
+.content-section3 {
     background-color: beige;
-    color:#001958
+    color: #001958
 }
-.content-section2{
+
+.content-section2 {
     background-color: #001958;
     color: beige;
 }
@@ -186,7 +189,7 @@ nav {
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .logo img {
@@ -237,13 +240,14 @@ nav {
     cursor: pointer;
     font-weight: 500;
     transition: all 0.3s ease;
-    margin-left: 20px;  /* Space between profile icon and button */
+    margin-left: 20px;
+    /* Space between profile icon and button */
 }
 
 .logout-btn:hover {
     background-color: #001245;
     transform: translateY(-2px);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .notice-board {
@@ -266,8 +270,11 @@ nav {
 }
 
 .notice-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     height: 180px;
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 .notice-content marquee {
@@ -303,7 +310,7 @@ nav {
     .logo img {
         height: 45px;
     }
-    
+
     .nav-title h2 {
         font-size: 28px;
         text-underline-offset: 6px;
@@ -364,7 +371,7 @@ nav {
 
 .student-portal-header {
     font-size: 3.5em;
-    font-weight: bold;
+    font-weight: 900;
     font-family: 'Poppins', sans-serif;
     color: #001958;
     text-transform: uppercase;
@@ -405,19 +412,31 @@ nav {
 }
 
 #image_studentPortal {
-    width: 600px;
+    width: 700px;
     height: auto;
     margin-top: 90px;
     position: absolute;
     top: 20px;
+    margin-left: -69px;
 }
-#Student-portaltext{
+
+#Student-portaltext {
     margin-top: -100px !important;
 }
-#notice-board{
+
+#notice-board {
     margin-top: 100px;
+    margin-right: -35px;
+    width: 400px;
+    height: 340px;
 }
 
-
-
-
+#announcement-content {
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: flex-end;
+    display: flex;
+    height: 180px;
+    margin-bottom: -60px;
+    bottom:0;
+}
