@@ -38,7 +38,7 @@ body {
 .header h1 {
     position: relative;
     z-index: 2;
-    font-size: 3em;
+    font-size: 5em;
     font-weight: bold;
     margin-top: -15px;
     margin-left: 30px !important;
