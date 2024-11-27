@@ -453,3 +453,12 @@ nav {
     line-height: 1.5;
     padding: 0 20px;
 }
+#announcements-section{
+    background-color: #001958;
+    color: beige;
+}
+
+#announcements-section .dashboard-btn {
+    background-color: white;
+    color: #001958;
+}
