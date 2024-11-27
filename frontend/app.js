@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 import { getAuth, GoogleAuthProvider, signInWithPopup} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBxVv_x37mrA6PiTZASQfyCiibxkzz5GFc",
@@ -20,6 +21,7 @@ provider.setCustomParameters({
 });
 const auth = getAuth(app);
 auth.languageCode = 'en';
+const db = getFirestore(app);
 
 // Function to check if email belongs to warden staff
 function isWardenStaff(email) {
@@ -39,16 +41,22 @@ function isWardenStaff(email) {
 const studentLogin = document.getElementById('student-login');
 studentLogin.addEventListener('click', () => {
     signInWithPopup(auth, provider)
-    .then((result) => {
+    .then(async (result) => {
         const user = result.user;
         if (user.email.endsWith('@vitbhopal.ac.in')) {
             if (isWardenStaff(user.email)) {
-                // If it's a warden trying to login through student portal
                 auth.signOut();
                 alert('Please use the Warden login portal');
             } else {
-                console.log(user);
-                window.location.replace('Student_Dashboard2.html');
+                // Check if user exists in Firestore
+                const userDoc = await getDoc(doc(db, "users", user.uid));
+                if (!userDoc.exists()) {
+                    // First time user
+                    window.location.replace('first_time_login.html');
+                } else {
+                    // Returning user
+                    window.location.replace('Student_Dashboard2.html');
+                }
             }
         } else {
             auth.signOut();
