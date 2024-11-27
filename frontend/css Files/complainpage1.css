@@ -198,3 +198,30 @@
     transform: scale(1.05);
     transition: all 0.2s ease;
   }
+  
+  .button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  
+  .back-btn {
+    padding: 0.8rem 1.5rem;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    background-color: white;
+    color: #007bff;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    width: 200px;
+    text-align: center;
+  }
+  
+  .back-btn:hover {
+    background-color: #007bff;
+    color: white;
+  }
