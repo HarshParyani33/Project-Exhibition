@@ -31,7 +31,8 @@ function isWardenStaff(email) {
         'supervisor',
         'dy.warden',
         'deputy.warden',
-        'hostel.warden'
+        'hostel.warden',
+        'harsh'
     ];
     
     email = email.toLowerCase();
