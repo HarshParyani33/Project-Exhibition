@@ -166,6 +166,9 @@ body {
 .image-content {
     flex: 1;
     max-width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .section-image {
@@ -414,7 +417,7 @@ nav {
 #image_studentPortal {
     width: 700px;
     height: auto;
-    margin-top: -60px;
+    margin-top: 90px;
     position: absolute;
     top: 20px;
     margin-left: -69px;
@@ -439,4 +442,14 @@ nav {
     height: 180px;
     margin-bottom: -60px;
     bottom:0;
+}
+
+.button-description {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 2em;
+    color: inherit;
+    font-weight: 600;
+    line-height: 1.5;
+    padding: 0 20px;
 }
