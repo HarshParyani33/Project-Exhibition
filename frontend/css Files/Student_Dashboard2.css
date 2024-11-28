@@ -453,3 +453,48 @@ nav {
     line-height: 1.5;
     padding: 0 20px;
 }
+
+/* Contact Section Styles */
+.contact-section {
+    background-color: #001958;
+    color: white;
+    padding: 40px 0;
+    margin-bottom: 0;
+}
+
+.contact-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-content h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.contact-info {
+    font-size: 1.2em;
+    line-height: 1.8;
+}
+
+.contact-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.contact-info ul li {
+    margin: 5px 0;
+}
+
+.copyright {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #ccc;
+}
+
+.contact-info p strong {
+    color: #FFA000;
+}
