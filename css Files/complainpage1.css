@@ -100,6 +100,116 @@
     margin-bottom: 0.5rem;
   }
   
+  .complaints-list {
+    margin-top: 1rem;
+  }
+  
+  .complaint-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+  
+  .complaint-main {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa;
+  }
+  
+  .complaint-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .complaint-id {
+    font-weight: 500;
+    color: #666;
+  }
+  
+  /* Status Badge Styling */
+  .status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  
+  .status-badge.pending {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+  }
+  
+  /* Details Toggle Button */
+  .details-toggle {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+  }
+  
+  .details-toggle:hover {
+    background-color: #0056b3;
+  }
+  
+  .details-toggle.active {
+    background-color: #6c757d;
+  }
+  
+  /* Complaint Details Section */
+  .complaint-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: white;
+  }
+  
+  .complaint-details.active {
+    max-height: 500px; /* Adjust this value based on your content */
+    transition: max-height 0.3s ease-in;
+  }
+  
+  .details-content {
+    padding: 1rem;
+    border-top: 1px solid #e0e0e0;
+  }
+  
+  .details-content p {
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  .details-content p:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 576px) {
+    .complaint-main {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    
+    .complaint-info {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    
+    .details-toggle {
+      width: 100%;
+    }
+  }
+  
   /* Grievance Section */
   .grievance-section {
     margin-bottom: 2rem;
@@ -162,12 +272,37 @@
   }
   
   form input,
-  form textarea {
+  form textarea,
+  form select {
     width: 100%;
     padding: 0.8rem;
     margin-bottom: 1rem;
     border: 1px solid #ddd;
     border-radius: 5px;
+  }
+  
+  form select {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+    appearance: auto;
+  }
+  
+  form select:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  form select option {
+    padding: 0.5rem;
+  }
+  
+  form select option:first-child {
+    color: #757575;
   }
   
   form button {
@@ -197,4 +332,97 @@
     border-color: #ecf0f1;
     transform: scale(1.05);
     transition: all 0.2s ease;
+  }
+  
+  /* Attachment styling */
+  .attachment-section {
+    margin-bottom: 1rem;
+  }
+  
+  .attachment-section input[type="file"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px dashed #ddd;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    cursor: pointer;
+  }
+  
+  .attachment-section input[type="file"]:hover {
+    border-color: #007bff;
+    background-color: #f1f8ff;
+  }
+  
+  .attachment-section .file-hint {
+    display: block;
+    color: #666;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+  }
+  
+  /* Style for when files are being dragged over the input */
+  .attachment-section input[type="file"]::-webkit-file-upload-button {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 1rem;
+  }
+  
+  .attachment-section input[type="file"]::-webkit-file-upload-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Form Buttons Container */
+  .form-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+  }
+  
+  .btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.2s ease;
+    min-width: 120px;
+    text-align: center;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  .btn-secondary {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 576px) {
+    .form-buttons {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .btn {
+      width: 200px;
+    }
   }

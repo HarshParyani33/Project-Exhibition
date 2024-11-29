@@ -26,7 +26,30 @@
     <div class="container">
       <section class="complaints-section">
         <h2>Complaints</h2>
-        <p>No complaints registered yet.</p>
+        
+        <div class="complaints-list">
+          <!-- Example of a complaint card -->
+          <div class="complaint-card">
+            <div class="complaint-main">
+              <div class="complaint-info">
+                <span class="complaint-id">#CM001</span>
+                <span class="status-badge pending">Pending</span>
+              </div>
+              <button class="details-toggle" onclick="toggleDetails(this)">Details</button>
+            </div>
+            
+            <div class="complaint-details">
+              <div class="details-content">
+                <p><strong>Subject:</strong> Room Maintenance</p>
+                <p><strong>Date Submitted:</strong> March 15, 2024</p>
+                <p><strong>Location:</strong> Block A, Room 203</p>
+                <p><strong>Description:</strong> Broken window handle needs replacement</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Add more complaint cards as needed -->
+        </div>
       </section>
 
       <section class="grievance-section">
@@ -59,7 +82,15 @@
         <h3>Submit Complaint</h3>
         <form>
           <label for="subject">Complaint Subject</label>
-          <input type="text" id="subject" placeholder="Enter your complaint subject" required>
+          <select id="subject" required>
+            <option value="" disabled selected>Select complaint subject</option>
+            <option value="room">Room Maintenance</option>
+            <option value="internet">Internet/WiFi Issue</option>
+            <option value="mess">Mess</option>
+            <option value="water">Water</option>
+            <option value="electrical">Electrical</option>
+            <option value="other">Any other issue</option>
+          </select>
 
           <label for="location">Location</label>
           <input type="text" id="location" placeholder="Enter your block and room number" required>
@@ -67,10 +98,33 @@
           <label for="details">Details of the Issue</label>
           <textarea id="details" rows="5" placeholder="Describe your issue in detail..." required></textarea>
 
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <div class="attachment-section">
+            <label for="attachments">Attachments (Optional)</label>
+            <input type="file" id="attachments" name="attachments" accept="image/*,.pdf,.doc,.docx" multiple>
+            <small class="file-hint">Supported formats: Images, PDF, DOC (Max size: 5MB per file)</small>
+          </div>
+
+          <div class="form-buttons">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="Student_Dashboard2.html" class="btn btn-secondary">Back</a>
+          </div>
         </form>
       </section>
     </div>
   </main>
+
+  <script>
+  function toggleDetails(button) {
+    const card = button.closest('.complaint-card');
+    const details = card.querySelector('.complaint-details');
+    
+    // Toggle the active class
+    details.classList.toggle('active');
+    button.classList.toggle('active');
+    
+    // Update button text
+    button.textContent = details.classList.contains('active') ? 'Hide Details' : 'Details';
+  }
+  </script>
 </body>
 </html>
