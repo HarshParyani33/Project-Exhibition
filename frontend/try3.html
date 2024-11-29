@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Portal</title>
+    <title>Faculty Portal</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css Files\Student_Dashboard2.css">
+    <link rel="stylesheet" href="css Files\faculty_dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
@@ -80,7 +80,7 @@
                         <p class="button-description">Schedule meetings with wardens!!</p>
                     </div>
                     <div class="button-group">
-                        <a href="https://calendar.app.google/M2ayz1YztdU459bVA" target="_blank">
+                        <a href="" >
                             <button class="dashboard-btn">Book an Appointment</button>
                         </a>
                     </div>
@@ -93,7 +93,7 @@
                 <div class="section-content">
                     <div class="button-group">
                         <a href ="complainpage1.html">
-                        <button class="dashboard-btn">Complaints</button>
+                        <button class="dashboard-btn"> Resolve Complaints</button>
                         </a>
                     </div>
                     <div class="image-content">
@@ -113,7 +113,7 @@
                     </div>
                     <div class="button-group">
                         <a href="leaverequest.html">
-                            <button class="dashboard-btn">Leave Request</button>
+                            <button class="dashboard-btn">Leave Approval </button>
                         </a>
                     </div>
                 </div>
@@ -172,12 +172,28 @@
             "• Khichdi is available for sick students in the mess"
         ];
 
-        // Display announcements
+        // Display announcements with delete buttons
         function displayAnnouncements() {
             const announcementsList = document.getElementById('announcements-list');
             announcementsList.innerHTML = announcements
-                .map(announcement => `<p>${announcement}</p>`)
+                .map((announcement, index) => `
+                    <div class="announcement-item">
+                        <p>${announcement}</p>
+                        <button class="delete-announcement-btn" onclick="deleteAnnouncement(${index})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `)
                 .join('');
+        }
+
+        // Add delete function
+        function deleteAnnouncement(index) {
+            if (confirm('Are you sure you want to delete this announcement?')) {
+                announcements.splice(index, 1);
+                localStorage.setItem('announcements', JSON.stringify(announcements));
+                displayAnnouncements();
+            }
         }
 
         // Modal functions
