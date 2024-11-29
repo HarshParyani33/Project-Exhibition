@@ -1,0 +1,338 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body Styling */
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  /* Container */
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  /* Header */
+  header {
+    background-color: #007bff;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  header h1 {
+    margin: 0;
+    color: white;
+    font-size: 2rem;
+  }
+  
+  header a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  header a:hover {
+    color: #ecf0f1;
+    text-decoration: none;
+  }
+  
+  /* Account Icon Styling */
+  .account-icon {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white;
+  }
+  
+  /* Add responsive design */
+  @media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .profile-pic {
+        width: 35px;
+        height: 35px;
+    }
+  }
+  
+  /* Remove old button styles */
+  header nav .btn,
+  header nav .btn-primary,
+  header nav .btn-secondary {
+    display: none;
+  }
+  
+  /* Complaints Section */
+  .complaints-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+  }
+  
+  .complaints-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .complaints-list {
+    margin-top: 1rem;
+  }
+  
+  .complaint-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+  
+  .complaint-main {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa;
+  }
+  
+  .complaint-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .complaint-id {
+    font-weight: 500;
+    color: #666;
+  }
+  
+  /* Status Badge Styling */
+  .status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  
+  .status-badge.pending {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+  }
+  
+  /* Details Toggle Button */
+  .details-toggle {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+  }
+  
+  .details-toggle:hover {
+    background-color: #0056b3;
+  }
+  
+  .details-toggle.active {
+    background-color: #6c757d;
+  }
+  
+  /* Complaint Details Section */
+  .complaint-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: white;
+  }
+  
+  .complaint-details.active {
+    max-height: 500px; /* Adjust this value based on your content */
+    transition: max-height 0.3s ease-in;
+  }
+  
+  .details-content {
+    padding: 1rem;
+    border-top: 1px solid #e0e0e0;
+  }
+  
+  .details-content p {
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  .details-content p:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 576px) {
+    .complaint-main {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    
+    .complaint-info {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    
+    .details-toggle {
+      width: 100%;
+    }
+  }
+  
+  /* Grievance Section */
+  .grievance-section {
+    margin-bottom: 2rem;
+  }
+  
+  .grievance-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .grievance-section h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  
+  .features {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  
+  .features div {
+    background: white;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+  }
+  
+  .features div h4 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .features div p {
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  /* Complaint Form */
+  .complaint-form {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .complaint-form h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  form label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  
+  form input,
+  form textarea,
+  form select {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  form select {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+    appearance: auto;
+  }
+  
+  form select:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  form select option {
+    padding: 0.5rem;
+  }
+  
+  form select option:first-child {
+    color: #757575;
+  }
+  
+  form button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  form button:hover {
+    background-color: #0056b3;
+  }
+  
+  nav {
+    margin-right: -20px;
+  }
+  
+  .account-icon a {
+    display: block;
+    text-decoration: none;
+  }
+  
+  .account-icon a:hover .profile-pic {
+    border-color: #ecf0f1;
+    transform: scale(1.05);
+    transition: all 0.2s ease;
+  }
+  
+
+  

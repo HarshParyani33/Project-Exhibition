@@ -1,0 +1,242 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color:  #007bff;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    color:white
+  }
+  
+  .logout-btn {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #001958;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .logout-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  main {
+    padding: 2rem;
+  }
+  
+  .complaints h2 {
+    text-align: center;
+    color: #001958;
+    font-weight: 900;
+    font-size: 3.5em;
+    letter-spacing: 2px;
+    margin: 30px 0;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-underline-offset: 15px;
+    text-decoration-thickness: 3px;
+    padding-bottom: 15px;
+  }
+  
+  .complaints-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .complaint-category {
+    width: 100%;
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+  }
+  
+  .new-complaints-badge {
+    text-decoration: none !important;
+    background: #007bff;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    margin-left: 10px;
+    display: inline-block;
+  }
+  
+  .category-badge {
+    background: #6c757d;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    margin-left: 10px;
+  }
+  
+  .new-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #007bff;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+  
+  .complaint-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .complaint-card h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+  }
+  
+  .complaint-card p {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .status-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .not-completed {
+    background-color: red;
+    color: white;
+  }
+  
+  .not-completed:hover {
+    background-color: darkred;
+  }
+  
+  .completed {
+    background-color: green;
+    color: white;
+  }
+  
+  .completed:hover {
+    background-color: darkgreen;
+  }
+  
+  .delete-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .delete-btn:hover {
+    background-color: #a71d2a;
+  }
+  
+  .nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .profile-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  .profile-btn a {
+    text-decoration: none;
+    display: block;
+  }
+  
+  .profile-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  .profile-btn:hover {
+    opacity: 0.8;
+  }
+  
+  .back-button-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .back-btn {
+    padding: 8px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .back-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .complaint-category h3 {
+    color: #000;
+    font-weight: 700;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+  }
+  
+  .category-badge {
+    background: #6c757d;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    margin-left: 10px;
+  }
+  
+  .complaint-category:nth-child(1) .category-badge,
+  .complaint-category:nth-child(2) .category-badge {
+    background: #007bff;
+  }
+  
+  .complaint-category:nth-child(n+3) .category-badge {
+    background: #6c757d;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css Files\faculty_dashboard.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="images\Vitlogo.png" alt="VIT Bhopal Logo">
+        </div>
+        <div class="nav-title">
+            <h2>Hostel Connect</h2>
+        </div>
+        <div class="nav-links">
+            <a href="#appointment-section" >Appointments</a>
+            <a href="#complaints-section" >Resolve Complaints</a>
+            <a href="#leave-section" >Announce notices</a>
+            <a href="#announcements-section" >Approve Leave</a>
+            <div class="profile-container">
+                <button class="profile-btn">
+                    <a href="studentprofile.html">
+                        <img src="images\Profile.png" alt="Profile" class="profile-icon">
+                        <span class="profile-text">Profile</span>
+                    </a>
+                </button>
+            </div>
+            <a href="login-2.html">
+                <button class="logout-btn">Logout</button>
+            </a>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <header class="col-12 section header">
+                <div class="header-content">
+                    <div class="header-center">
+                        <h1 class="student-portal-header" id="Student-portaltext">Faculty Dashboard</h1>
+                    </div>
+                    <div class="header-bottom-content">
+                        <div class="header-left">
+                            <img src="images/Student_portal2.png" id="image_studentPortal" alt="Student Icon" class="header-image">
+                        </div>
+                        <div class="header-right">
+                            <div class="notice-board" id="notice-board">
+                                <h4>Announcements</h4>
+                                <div class="notice-content" id="announcement-content">
+                                    <marquee direction="up" scrollamount="3" onmouseover="this.stop();" onmouseout="this.start();">
+                                        <p>• Important: Term end examinations start from 26th December 2024.Tea/milk is available from 9:30 pm in mess.</p>
+                                        <p>• Library timing extended during exam week</p>
+                                        <p>• It is mandatory to wear Id card before you leave the hostel premises</p>
+                                        <p>• Everyone has to be inside the room after 10 pm </p>
+                                        <p>• Leave request should be applied from Hostel Connect website</p>
+                                        <p>• Khichdi is available for sick students in the mess</p>
+                                    </marquee>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+        <div class="row">
+            <section id="appointment-section" class="col-12 section content-section1">
+                <div class="section-content">
+                    <div class="image-content">
+                        <img src="images\Book_appointment.png" alt="Academic Resources" class="section-image">
+                        <p class="button-description">Schedule meetings with wardens!!</p>
+                    </div>
+                    <div class="button-group">
+                        <a href="">
+                            <button class="dashboard-btn">Appointments</button>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="row">
+            <section id="complaints-section" class="col-12 section content-section2">
+                <div class="section-content">
+                    <div class="button-group">
+                        <a href="complaints_warden.html">
+                        <button class="dashboard-btn">Resolve Complaints</button>
+                        </a>
+                    </div>
+                    <div class="image-content">
+                        <img src="images\complaintphoto2.png" alt="Student Services" class="section-image">
+                        <p class="button-description">Register complaints regarding hostel facilities and services</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="row">
+            <section id="leave-section" class="col-12 section content-section3">
+                <div class="section-content">
+                    <div class="image-content">
+                        <img src="images\announcement.png" alt="Campus Life" class="section-image">
+                        <p class="button-description">Submit leave requests for hostel absence and track their status</p>
+                    </div>
+                    <div class="button-group">
+                        <a href="">
+                            <button class="dashboard-btn">Announce notices</button>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="row">
+            <section id="announcements-section" class="col-12 section content-section4">
+                <div class="section-content">
+                    <div class="button-group">
+                        <a href="">
+                            <button class="dashboard-btn">Leave Approval</button>
+                        </a>
+                    </div>
+                    <div class="image-content">
+                        <img src="images\leave_request.png" alt="Announcements" class="section-image">
+                        <p class="button-description">Make and manage announcements for hostel students</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+</body>
+</html>

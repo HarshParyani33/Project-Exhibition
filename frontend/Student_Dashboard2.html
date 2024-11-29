@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css Files\Student_Dashboard2.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="images\Vitlogo.png" alt="VIT Bhopal Logo">
+        </div>
+        <div class="nav-title">
+            <h2>Hostel Connect</h2>
+        </div>
+        <div class="nav-links">
+            <a href="#appointment-section" >Appointment</a>
+            <a href="#complaints-section" >Complaints</a>
+            <a href="#leave-section" >Leave Request</a>
+            <div class="profile-container">
+                <button class="profile-btn">
+                    <a href="studentprofile.html">
+                        <img src="images\Profile.png" alt="Profile" class="profile-icon">
+                        <span class="profile-text">Profile</span>
+                    </a>
+                </button>
+            </div>
+            <a href="login-2.html">
+                <button class="logout-btn">Logout</button>
+            </a>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <header class="col-12 section header">
+                <div class="header-content">
+                    <div class="header-center">
+                        <h1 class="student-portal-header" id="Student-portaltext">Student Portal</h1>
+                    </div>
+                    <div class="header-bottom-content">
+                        <div class="header-left">
+                            <img src="images/Student_portal2.png" id="image_studentPortal" alt="Student Icon" class="header-image">
+                        </div>
+                        <div class="header-right">
+                            <div class="notice-board" id="notice-board">
+                                <h4>Announcements</h4>
+                                <div class="notice-content" id="announcement-content">
+                                    <marquee direction="up" scrollamount="3" onmouseover="this.stop();" onmouseout="this.start();">
+                                        <div id="announcements-list">
+                                            <!-- Announcements will be dynamically inserted here -->
+                                        </div>
+                                    </marquee>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+        <div class="row">
+            <section id="appointment-section" class="col-12 section content-section1">
+                <div class="section-content">
+                    <div class="image-content">
+                        <img src="images\Book_appointment.png" alt="Academic Resources" class="section-image">
+                        <p class="button-description">Schedule meetings with wardens!!</p>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://calendar.app.google/M2ayz1YztdU459bVA" target="_blank">
+                            <button class="dashboard-btn">Book an Appointment</button>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="row">
+            <section id="complaints-section" class="col-12 section content-section2">
+                <div class="section-content">
+                    <div class="button-group">
+                        <a href ="complainpage1.html">
+                        <button class="dashboard-btn">Complaints</button>
+                        </a>
+                    </div>
+                    <div class="image-content">
+                        <img src="images\complaintphoto2.png" alt="Student Services" class="section-image">
+                        <p class="button-description">Register complaints regarding hostel facilities and services</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="row">
+            <section id="leave-section" class="col-12 section content-section3">
+                <div class="section-content">
+                    <div class="image-content">
+                        <img src="images\leave_request.png" alt="Campus Life" class="section-image">
+                        <p class="button-description">Submit leave requests for hostel absence and track their status</p>
+                    </div>
+                    <div class="button-group">
+                        <a href="leaverequest.html">
+                            <button class="dashboard-btn">Leave Request</button>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="row">
+            <section id="contact-section" class="col-12 section contact-section">
+                <div class="contact-content">
+                    <h2>Contact Us</h2>
+                    <div class="contact-info">
+                        <p><strong>Email:</strong> hostelconnect@gmail.com</p>
+                        <p><strong>Made by:</strong></p>
+                        <ul>
+                            <li>Smriti Bisht</li>
+                            <li>Nivedya B</li>
+                            <li>Kasak Singh</li>
+                            <li>Pragati Tripathi</li>
+                            <li>Harsh Paryani</li>
+                        </ul>
+                        <p class="copyright">© 2024 Hostel Connect. All rights reserved.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Get announcements from localStorage
+        function displayAnnouncements() {
+            const announcements = JSON.parse(localStorage.getItem('announcements')) || [
+                "• Important: Term end examinations start from 26th December 2024.Tea/milk is available from 9:30 pm in mess.",
+                "• Library timing extended during exam week",
+                "• It is mandatory to wear Id card before you leave the hostel premises",
+                "• Everyone has to be inside the room after 10 pm",
+                "• Leave request should be applied from Hostel Connect website",
+                "• Khichdi is available for sick students in the mess"
+            ];
+
+            const announcementsList = document.getElementById('announcements-list');
+            announcementsList.innerHTML = announcements
+                .map(announcement => `<p>${announcement}</p>`)
+                .join('');
+        }
+
+        // Initial display
+        displayAnnouncements();
+    </script>
+</body>
+</html>
