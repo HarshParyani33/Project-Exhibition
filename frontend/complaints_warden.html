@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hostel Complaint System</title>
+  <link rel="stylesheet" href="css Files\wardencomplaint.css">
+</head>
+<body>
+  <header>
+    <h1>Hostel Connect</h1>
+    <div class="nav-buttons">
+        <button class="profile-btn">
+            <a href="wardenprofile.html">
+                <img src="images\Profile.png" alt="Profile" class="profile-icon">
+            </a>
+        </button>
+        <button class="logout-btn">Logout</button>
+    </div>
+  </header>
+  
+  <main>
+    <section class="complaints">
+      <h2 class="complaints-heading">Complaints <span class="new-complaints-badge">3</span></h2>
+      
+      <div class="complaints-container">
+        <!-- Mess Complaints -->
+        <div class="complaint-category">
+          <h3>Mess Issues <span class="category-badge">2</span></h3>
+          <div class="complaint-card" id="complaint-1">
+            <span class="new-dot"></span>
+            <h4>Poor Food Quality</h4>
+            <p>Created on Dec 15, 2023</p>
+            <p>The food quality has degraded significantly in the past week.</p>
+            <div class="buttons">
+              <button class="status-btn not-completed" onclick="updateStatus('complaint-1', 'Completed')">Not Completed</button>
+              <button class="delete-btn" onclick="deleteComplaint('complaint-1')">Delete</button>
+            </div>
+          </div>
+          <!-- More mess complaints can be added here -->
+        </div>
+
+        <!-- Electrical Issues -->
+        <div class="complaint-category">
+          <h3>Electrical Issues <span class="category-badge">1</span></h3>
+          <div class="complaint-card" id="complaint-2">
+            <span class="new-dot"></span>
+            <h4>Switch not working (Room No. L block - 27)</h4>
+            <p>Created on Dec 15, 2023</p>
+            <p>I am facing issues with the switch in my room. It is not functioning correctly.</p>
+            <div class="buttons">
+              <button class="status-btn not-completed" onclick="updateStatus('complaint-2', 'Completed')">Not Completed</button>
+              <button class="delete-btn" onclick="deleteComplaint('complaint-2')">Delete</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Water Issues -->
+        <div class="complaint-category">
+          <h3>Water Issues <span class="category-badge">0</span></h3>
+          <!-- Complaints will be dynamically added here -->
+        </div>
+
+        <!-- Internet & WiFi -->
+        <div class="complaint-category">
+          <h3>Internet & WiFi <span class="category-badge">0</span></h3>
+          <!-- Complaints will be dynamically added here -->
+        </div>
+
+        <!-- Room Maintenance -->
+        <div class="complaint-category">
+          <h3>Room Maintenance <span class="category-badge">0</span></h3>
+          <!-- Complaints will be dynamically added here -->
+        </div>
+
+        <!-- Other Issues -->
+        <div class="complaint-category">
+          <h3>Other Issues <span class="category-badge">0</span></h3>
+          <!-- Complaints will be dynamically added here -->
+        </div>
+      </div>
+    </section>
+    <div class="back-button-container">
+      <button class="back-btn" onclick="history.back()">Back</button>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
