@@ -18,69 +18,76 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-        .form-title {
-            color: #001958;
-            text-align: center;
-            margin-bottom: 30px;
-        }
         .form-group {
             margin-bottom: 20px;
         }
-        .submit-btn {
-            background-color: #001958;
-            color: white;
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
+            height: 100%;
+            background-color: #f5f5dc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
         }
-        .submit-btn:hover {
-            background-color: #001245;
+
+        .content {
+            display: none;  /* Hide content by default */
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="profile-container">
-            <h2 class="form-title">Complete Your Profile</h2>
-            <form id="firstTimeForm">
-                <div class="form-group">
-                    <label for="block">Hostel Block</label>
-                    <select class="form-control" id="block" required>
-                        <option value="">Select Block</option>
-                        <option value="Girls Hostel Block 1">Girls Hostel Block 1</option>
-                        <option value="Girls Hostel Block 2">Girls Hostel Block 2</option>
-                        <option value="Boys Hostel Block 1">Boys Hostel Block 1</option>
-                        <option value="Boys Hostel Block 2">Boys Hostel Block 2</option>
-                        <option value="Boys Hostel Block 3">Boys Hostel Block 3</option>
-                        <option value="Boys Hostel Block 4">Boys Hostel Block 4</option>
-                        <option value="Boys Hostel Block 5">Boys Hostel Block 5</option>
-                        <option value="Boys Hostel Block 6">Boys Hostel Block 6</option>
-                        <option value="Special Block">Special Block</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="roomNumber">Room Number</label>
-                    <input type="text" class="form-control" id="roomNumber" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" class="form-control" id="phone" pattern="[0-9]{10}" required>
-                </div>
-                <button type="submit" class="submit-btn">Save Profile</button>
-            </form>
+    <div class="loading-screen">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="container">
+            <div class="profile-container">
+                <h2 class="text-center mb-4">Complete Your Profile</h2>
+                <form id="firstTimeForm">
+                    <div class="form-group">
+                        <label for="block">Hostel Block</label>
+                        <select class="form-control" id="block" required>
+                            <option value="">Select Block</option>
+                            <option value="Girls Hostel Block 1">Girls Hostel Block 1</option>
+                            <option value="Girls Hostel Block 2">Girls Hostel Block 2</option>
+                            <option value="Boys Hostel Block 1">Boys Hostel Block 1</option>
+                            <option value="Boys Hostel Block 2">Boys Hostel Block 2</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="roomNumber">Room Number</label>
+                        <input type="text" class="form-control" id="roomNumber" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="proctorEmail">Proctor's Email</label>
+                        <input type="email" class="form-control" id="proctorEmail" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" pattern="[0-9]{10}" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">Save Profile</button>
+                </form>
+            </div>
         </div>
     </div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
         import { getAuth } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
-        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
         const firebaseConfig = {
-            // Your Firebase config here
             apiKey: "AIzaSyBxVv_x37mrA6PiTZASQfyCiibxkzz5GFc",
             authDomain: "hostel-connect-login.firebaseapp.com",
             projectId: "hostel-connect-login",
@@ -92,32 +99,90 @@
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
-        const db = getFirestore(app);
 
-        document.getElementById('firstTimeForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
+        async function checkFirstTimeLogin() {
             const user = auth.currentUser;
             if (!user) {
-                alert('No user logged in');
+                window.location.href = 'login-2.html';
                 return;
             }
 
-            const userData = {
-                block: document.getElementById('block').value,
-                roomNumber: document.getElementById('roomNumber').value,
-                phone: document.getElementById('phone').value,
-                email: user.email,
-                name: user.displayName,
-                firstLogin: false
-            };
+            const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+            
+            if (userData.email === user.email && userData.block && userData.roomNumber) {
+                window.location.href = 'Student_Dashboard2.html';
+            } else {
+                document.querySelector('.loading-screen').style.display = 'none';
+                document.querySelector('.content').style.display = 'block';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    checkFirstTimeLogin();
+                } else {
+                    window.location.href = 'login-2.html';
+                }
+            });
+        });
+
+        document.getElementById('firstTimeForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            console.log('Form submitted');
 
             try {
-                await setDoc(doc(db, "users", user.uid), userData);
+                const user = auth.currentUser;
+                if (!user) {
+                    alert('Please login first');
+                    window.location.href = 'login-2.html';
+                    return;
+                }
+
+                // Get existing data from localStorage
+                const existingData = JSON.parse(localStorage.getItem('userData') || '{}');
+
+                const formData = {
+                    block: document.getElementById('block').value,
+                    roomNumber: document.getElementById('roomNumber').value,
+                    proctorEmail: document.getElementById('proctorEmail').value,
+                    phone: document.getElementById('phone').value,
+                    email: user.email,
+                    name: existingData.name || user.displayName || '',
+                    studentId: existingData.studentId || '',  // Include studentId from localStorage
+                    uid: user.uid
+                };
+
+                if (!formData.studentId) {
+                    alert('Student ID not found. Please login again.');
+                    window.location.href = 'login-2.html';
+                    return;
+                }
+
+                console.log('Form data:', formData);
+                
+                // Save to MongoDB only
+                const mongoResponse = await fetch('http://localhost:5000/api/users', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const mongoData = await mongoResponse.json();
+                if (!mongoData.success) {
+                    throw new Error(mongoData.message || 'Failed to save to MongoDB');
+                }
+                
+                // Update localStorage with new data
+                localStorage.setItem('userData', JSON.stringify(formData));
+                
+                alert('Profile completed successfully!');
                 window.location.href = 'Student_Dashboard2.html';
             } catch (error) {
-                console.error("Error saving user data:", error);
-                alert('Error saving profile. Please try again.');
+                console.error('Error:', error);
+                alert('Error saving profile details: ' + error.message);
             }
         });
     </script>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Leave Request</title>
+</head>
+<body>
+    <h2>Test Leave Request System</h2>
+    <button onclick="testLeaveRequest()">Send Test Leave Request</button>
+    <div id="result"></div>
+
+    <script>
+        async function testLeaveRequest() {
+            const testLeaveRequest = {
+                studentName: "Test Student",
+                studentEmail: "harshparyani68@gmail.com",
+                leaveType: "casual",
+                visitingPlace: "Home",
+                reason: "Family function",
+                fromDate: new Date().toISOString().split('T')[0],
+                toDate: new Date(Date.now() + 86400000).toISOString().split('T')[0],
+                timeFrom: "10:00",
+                timeTo: "18:00",
+                proctorEmail: "harshparyani2005@gmail.com"
+            };
+
+            try {
+                const response = await fetch('http://localhost:5000/api/leave/request', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(testLeaveRequest)
+                });
+
+                const result = await response.json();
+                document.getElementById('result').innerText = JSON.stringify(result);
+            } catch (error) {
+                document.getElementById('result').innerText = 'An error occurred while sending the test leave request.';
+            }
+        }
+    </script>
+</body>
+</html> 

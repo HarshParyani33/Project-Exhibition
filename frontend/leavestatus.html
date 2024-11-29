@@ -58,5 +58,83 @@
             </div>
         </div>
     </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getAuth } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBxVv_x37mrA6PiTZASQfyCiibxkzz5GFc",
+            authDomain: "hostel-connect-login.firebaseapp.com",
+            projectId: "hostel-connect-login",
+            storageBucket: "hostel-connect-login.firebasestorage.app",
+            messagingSenderId: "814264090085",
+            appId: "1:814264090085:web:5e2c18177f778d93f3830c",
+            measurementId: "G-J5RC2531WY"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        async function fetchAndDisplayStatus() {
+            try {
+                const user = auth.currentUser;
+                if (!user) {
+                    window.location.href = 'login-2.html';
+                    return;
+                }
+
+                const response = await fetch(`http://localhost:5000/api/leave/status/${user.email}`);
+                const data = await response.json();
+
+                const tbody = document.querySelector('tbody');
+                const noRecords = document.querySelector('.no-records');
+
+                if (data.success && data.leaves && data.leaves.length > 0) {
+                    noRecords.style.display = 'none';
+                    tbody.innerHTML = data.leaves.map(leave => `
+                        <tr>
+                            <td>${leave._id}</td>
+                            <td>${leave.visitingPlace}</td>
+                            <td>${leave.reason}</td>
+                            <td>${leave.leaveType}</td>
+                            <td>${leave.fromDate} ${leave.timeFrom}</td>
+                            <td>${leave.toDate} ${leave.timeTo}</td>
+                            <td class="status-${leave.status.toLowerCase()}">${leave.status}</td>
+                            <td>${leave.remarks || '-'}</td>
+                        </tr>
+                    `).join('');
+                } else {
+                    noRecords.style.display = 'block';
+                    tbody.innerHTML = '<tr><td colspan="8" class="no-data">No data available in table</td></tr>';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error fetching leave status');
+            }
+        }
+
+        // Check auth state and fetch status when page loads
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                fetchAndDisplayStatus();
+            } else {
+                window.location.href = 'login-2.html';
+            }
+        });
+
+        // Refresh status every 30 seconds
+        setInterval(fetchAndDisplayStatus, 30000);
+
+        // Add search functionality
+        document.getElementById('search').addEventListener('input', function(e) {
+            const searchText = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('tbody tr');
+            
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(searchText) ? '' : 'none';
+            });
+        });
+    </script>
 </body>
 </html>
