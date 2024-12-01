@@ -30,6 +30,7 @@
                 <table>
                     <thead>
                         <tr>
+                            <th>S.No</th>
                             <th>Leave ID</th>
                             <th>Visit Place</th>
                             <th>Reason</th>
@@ -96,8 +97,9 @@
 
                 if (data.success && data.leaves && data.leaves.length > 0) {
                     noRecords.style.display = 'none';
-                    tbody.innerHTML = data.leaves.map(leave => `
+                    tbody.innerHTML = data.leaves.map((leave, index) => `
                         <tr>
+                            <td>${index + 1}</td>
                             <td>${leave._id}</td>
                             <td>${leave.visitingPlace}</td>
                             <td>${leave.reason}</td>

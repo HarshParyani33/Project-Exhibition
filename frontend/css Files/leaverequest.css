@@ -167,3 +167,11 @@ textarea {
 .back-button button:hover {
     background-color: #45a049;
 }
+
+table tr {
+    line-height: 2.5;
+}
+
+table td, table th {
+    padding: 12px 8px;
+}
