@@ -75,6 +75,9 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
 
+        let currentPage = 1;
+        const itemsPerPage = 10;
+
         async function fetchAndDisplayStatus() {
             try {
                 const user = auth.currentUser;
@@ -83,11 +86,13 @@
                     return;
                 }
 
-                const response = await fetch(`http://localhost:5000/api/leave/status/${user.email}`);
+                const response = await fetch(`http://localhost:5000/api/leave/status/${user.email}?page=${currentPage}&limit=${itemsPerPage}`);
                 const data = await response.json();
 
                 const tbody = document.querySelector('tbody');
                 const noRecords = document.querySelector('.no-records');
+                const prevButton = document.querySelector('.pagination button:first-child');
+                const nextButton = document.querySelector('.pagination button:last-child');
 
                 if (data.success && data.leaves && data.leaves.length > 0) {
                     noRecords.style.display = 'none';
@@ -103,6 +108,9 @@
                             <td>${leave.remarks || '-'}</td>
                         </tr>
                     `).join('');
+
+                    prevButton.disabled = currentPage === 1;
+                    nextButton.disabled = data.leaves.length < itemsPerPage;
                 } else {
                     noRecords.style.display = 'block';
                     tbody.innerHTML = '<tr><td colspan="8" class="no-data">No data available in table</td></tr>';
