@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complaints</title>
+  <link rel="stylesheet" href="css Files\complainpage1.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href = "Student_Dashboard2.html">
+      <h1>Hostel Connect</h1>
+      </a>
+      <nav>
+        <div class="account-icon">
+          <a href="studentprofile.html">
+            <img src="images\Profile.png" alt="Account" class="profile-pic">
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="complaints-section">
+        <h2>Complaints</h2>
+        
+        <div class="complaints-list">
+          <!-- Example of a complaint card -->
+          <div class="complaint-card">
+            <div class="complaint-main">
+              <div class="complaint-info">
+                <span class="complaint-id">#CM001</span>
+                <span class="status-badge pending">Pending</span>
+              </div>
+              <button class="details-toggle" onclick="toggleDetails(this)">Details</button>
+            </div>
+            
+            <div class="complaint-details">
+              <div class="details-content">
+                <p><strong>Subject:</strong> Room Maintenance</p>
+                <p><strong>Date Submitted:</strong> March 15, 2024</p>
+                <p><strong>Location:</strong> Block A, Room 203</p>
+                <p><strong>Description:</strong> Broken window handle needs replacement</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Add more complaint cards as needed -->
+        </div>
+      </section>
+
+      <section class="grievance-section">
+        <h2>Hostel Grievance Redressal</h2>
+        <h3>Submit Your Grievance</h3>
+        <p>
+          We ensure a swift and confidential resolution of student concerns, guaranteeing a quick response to submitted complaints while fostering a secure and comfortable living environment for all residents.
+        </p>
+        </section>
+
+        <div class="features">
+          <div>
+            <h4><i class="icon">⚡</i> Swift Grievance Resolution</h4>
+            <p>Quick and effective solutions to ensure your concerns are promptly addressed.</p>
+          </div>
+          <div>
+            <h4><i class="icon">🔒</i> Confidentiality Assured</h4>
+            <p>Your grievances are handled with the utmost confidentiality and privacy.</p>
+          </div>
+          <div>
+            <h4><i class="icon">📞</i> Easy Communication</h4>
+            <p>A smooth and accessible channel for expressing your concerns.</p>
+          </div>
+        </div>
+      </section>
+    </br>
+      
+
+      <section class="complaint-form">
+        <h3>Submit Complaint</h3>
+        <form>
+          <label for="subject">Complaint Subject</label>
+          <select id="subject" required>
+            <option value="" disabled selected>Select complaint subject</option>
+            <option value="room">Room Maintenance</option>
+            <option value="internet">Internet/WiFi Issue</option>
+            <option value="mess">Mess</option>
+            <option value="water">Water</option>
+            <option value="electrical">Electrical</option>
+            <option value="other">Any other issue</option>
+          </select>
+
+          <label for="location">Location</label>
+          <input type="text" id="location" placeholder="Enter your block and room number" required>
+
+          <label for="details">Details of the Issue</label>
+          <textarea id="details" rows="5" placeholder="Describe your issue in detail..." required></textarea>
+
+          <div class="attachment-section">
+            <label for="attachments">Attachments (Optional)</label>
+            <input type="file" id="attachments" name="attachments" accept="image/*,.pdf,.doc,.docx" multiple>
+            <small class="file-hint">Supported formats: Images, PDF, DOC (Max size: 5MB per file)</small>
+          </div>
+
+          <div class="form-buttons">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="Student_Dashboard2.html" class="btn btn-secondary">Back</a>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <script>
+  function toggleDetails(button) {
+    const card = button.closest('.complaint-card');
+    const details = card.querySelector('.complaint-details');
+    
+    // Toggle the active class
+    details.classList.toggle('active');
+    button.classList.toggle('active');
+    
+    // Update button text
+    button.textContent = details.classList.contains('active') ? 'Hide Details' : 'Details';
+  }
+  </script>
+</body>
+</html>
