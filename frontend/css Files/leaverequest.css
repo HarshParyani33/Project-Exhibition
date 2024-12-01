@@ -14,12 +14,12 @@ body {
 }
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 1200px;
+    margin: 20px auto;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 30px;
 }
 
 .header {
@@ -174,4 +174,133 @@ table tr {
 
 table td, table th {
     padding: 12px 8px;
+}
+
+/* Table styles */
+.table-container {
+    width: 95%;
+    margin: 0 auto;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    min-width: 1000px; /* Ensures table doesn't get too cramped */
+    border-collapse: collapse;
+}
+
+table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    text-align: left;
+    padding: 15px 12px;
+}
+
+/* Specific column widths */
+table th:nth-child(1), /* S.No */
+table td:nth-child(1) {
+    width: 5%;
+}
+
+table th:nth-child(2), /* Leave ID */
+table td:nth-child(2) {
+    width: 15%;
+}
+
+table th:nth-child(3), /* Visit Place */
+table td:nth-child(3) {
+    width: 15%;
+}
+
+table th:nth-child(4), /* Reason */
+table td:nth-child(4) {
+    width: 20%;
+}
+
+table th:nth-child(5), /* Leave Type */
+table td:nth-child(5) {
+    width: 10%;
+}
+
+table th:nth-child(6), /* From */
+table td:nth-child(6),
+table th:nth-child(7), /* To */
+table td:nth-child(7) {
+    width: 12%;
+}
+
+table th:nth-child(8), /* Status */
+table td:nth-child(8) {
+    width: 8%;
+}
+
+table th:nth-child(9), /* Remarks */
+table td:nth-child(9) {
+    width: 15%;
+}
+
+/* Status colors */
+.status-pending {
+    color: #ffa500;
+    font-weight: bold;
+}
+
+.status-approved {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.status-rejected {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+/* Container modifications */
+.container {
+    max-width: 1200px; /* Increased from 800px */
+    margin: 20px auto;
+    padding: 30px;
+}
+
+.status-section {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Search bar styling */
+.search-bar {
+    margin-bottom: 20px;
+    padding: 10px 0;
+}
+
+.search-bar input {
+    width: 300px;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+/* Pagination styling */
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.pagination button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pagination button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
 }
