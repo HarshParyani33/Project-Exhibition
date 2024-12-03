@@ -1,21 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
-
-// Create User Schema
-const userSchema = new mongoose.Schema({
-    studentId: String,
-    name: String,
-    email: { type: String, unique: true },
-    block: String,
-    roomNumber: String,
-    proctorEmail: String,
-    phone: String,
-    createdAt: { type: Date, default: Date.now },
-    updatedAt: { type: Date, default: Date.now }
-});
-
-const User = mongoose.model('User', userSchema);
+const UserModel = require('../models/User');
 
 // Route to save/update user profile
 router.post('/', async (req, res) => {
@@ -23,19 +8,19 @@ router.post('/', async (req, res) => {
         console.log('Received profile data:', req.body);
 
         // Try to find existing user by email
-        const existingUser = await User.findOne({ email: req.body.email });
+        const existingUser = await UserModel.findOne({ email: req.body.email });
 
         let userData;
         if (existingUser) {
             // Update existing user
-            userData = await User.findOneAndUpdate(
+            userData = await UserModel.findOneAndUpdate(
                 { email: req.body.email },
                 req.body,
                 { new: true } // Return updated document
             );
         } else {
             // Create new user
-            userData = await User.create(req.body);
+            userData = await UserModel.create(req.body);
         }
         
         console.log('Saved user data:', userData);
@@ -58,7 +43,7 @@ router.post('/', async (req, res) => {
 router.get('/:email', async (req, res) => {
     try {
         console.log('Searching for user with email:', req.params.email);
-        const user = await User.findOne({ email: req.params.email });
+        const user = await UserModel.findOne({ email: req.params.email });
         
         if (user) {
             console.log('User found:', user);
@@ -79,6 +64,20 @@ router.get('/:email', async (req, res) => {
             success: false,
             message: error.message
         });
+    }
+});
+
+// Route to add a new user
+router.post('/api/users', async (req, res) => {
+    const userData = req.body;
+
+    try {
+        const newUser = new UserModel(userData);
+        await newUser.save();
+        res.status(201).json({ message: 'User added successfully', user: newUser });
+    } catch (error) {
+        console.error('Error adding user:', error);
+        res.status(500).json({ message: 'Error adding user' });
     }
 });
 

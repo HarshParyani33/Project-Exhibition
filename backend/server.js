@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
+const userRoutes = require('./routes/userRoutes'); // Adjust the path as necessary
 
 const app = express();
 
@@ -16,9 +17,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI)
-    .then(() => console.log('Connected to MongoDB Atlas'))
-    .catch(err => console.error('MongoDB connection error:', err));
+mongoose.connect('mongodb+srv://hostelconnectvit:Harsh%40123@cluster0.jkw2v.mongodb.net/hostelconnect?retryWrites=true&w=majority')
+    .then(() => {
+        console.log('MongoDB connected');
+    })
+    .catch(err => {
+        console.error('MongoDB connection error:', err);
+    });
 
 // Add this before your routes
 app.use((req, res, next) => {
@@ -32,7 +37,7 @@ app.use((req, res, next) => {
 
 // Routes
 app.use('/api/leave', require('./routes/leaveRoutes'));
-app.use('/api/users', require('./routes/userRoutes'));
+app.use('/api/users', userRoutes);
 
 // Add detailed error handling
 app.use((err, req, res, next) => {

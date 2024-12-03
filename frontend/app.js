@@ -44,6 +44,8 @@ studentLogin.addEventListener('click', () => {
     signInWithPopup(auth, provider)
     .then(async (result) => {
         const user = result.user;
+        console.log('User logged in:', user);
+
         if (user.email.endsWith('@vitbhopal.ac.in')) {
             if (isWardenStaff(user.email)) {
                 auth.signOut();
@@ -53,6 +55,15 @@ studentLogin.addEventListener('click', () => {
                 const userDoc = await getDoc(doc(db, "users", user.uid));
                 if (!userDoc.exists()) {
                     // First time user
+                    const userData = {
+                        email: user.email,
+                        name: user.displayName || '',
+                        uid: user.uid,
+                        // Add other fields as necessary
+                    };
+                    console.log('Saving user data to localStorage:', userData);
+                    localStorage.setItem('userData', JSON.stringify(userData));
+                    console.log('Current localStorage:', localStorage);
                     window.location.replace('first_time_login.html');
                 } else {
                     // Returning user
@@ -64,7 +75,7 @@ studentLogin.addEventListener('click', () => {
             alert('Please use your VIT Bhopal email address to login');
         }
     }).catch((error) => {
-        console.error(error);
+        console.error('Login error:', error);
         alert('Login failed. Please use your VIT Bhopal email address.');
     });
 });
@@ -93,35 +104,64 @@ facultyLogin.addEventListener('click', () => {
     });
 });
 
-document.getElementById('first-time-login-form').addEventListener('submit', async function(e) {
+document.getElementById('firstTimeForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-
-    const formData = {
-        studentId: document.getElementById('studentId').value,
-        studentName: document.getElementById('studentName').value,
-        proctorEmail: document.getElementById('proctorEmail').value,
-        // Add other fields as needed
-    };
+    console.log('Form submitted');
 
     try {
-        const response = await fetch('http://localhost:5000/api/users', {
+        const user = auth.currentUser;
+        if (!user) {
+            alert('Please login first');
+            window.location.href = 'login-2.html';
+            return;
+        }
+
+        // Get existing data from localStorage
+        const existingData = JSON.parse(localStorage.getItem('userData') || '{}');
+        console.log('Existing user data:', existingData);
+
+        const formData = {
+            block: document.getElementById('block').value,
+            roomNumber: document.getElementById('roomNumber').value,
+            proctorEmail: document.getElementById('proctorEmail').value,
+            phone: document.getElementById('phone').value,
+            studentId: document.getElementById('studentId').value, // Get studentId from input
+            email: user.email,
+            name: existingData.name || user.displayName || '',
+            uid: user.uid
+        };
+
+        // Check if studentId is provided
+        if (!formData.studentId) {
+            alert('Student ID not found. Please login again.');
+            window.location.href = 'login-2.html';
+            return;
+        }
+
+        console.log('Form data being sent:', formData);
+        
+        // Save to MongoDB only
+        const mongoResponse = await fetch('http://localhost:5000/api/users', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(formData)
         });
 
-        const data = await response.json();
-        if (data.success) {
-            alert('Details saved successfully!');
-            window.location.href = 'Student_Dashboard2.html';
-        } else {
-            alert('Error saving details');
+        const mongoData = await mongoResponse.json();
+        if (!mongoData.success) {
+            throw new Error(mongoData.message || 'Failed to save to MongoDB');
         }
+        
+        // Update localStorage with new data
+        localStorage.setItem('userData', JSON.stringify(formData));
+        
+        alert('Profile completed successfully!');
+        window.location.href = 'Student_Dashboard2.html';
     } catch (error) {
         console.error('Error:', error);
-        alert('Error saving details');
+        alert('Error saving profile details: ' + error.message);
     }
 });
     

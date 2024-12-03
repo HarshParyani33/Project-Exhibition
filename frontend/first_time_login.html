@@ -52,6 +52,11 @@
                 <h2 class="text-center mb-4">Complete Your Profile</h2>
                 <form id="firstTimeForm">
                     <div class="form-group">
+                        <label for="studentId">Student ID</label>
+                        <input type="text" class="form-control" id="studentId" required>
+                    </div>
+                    
+                    <div class="form-group">
                         <label for="block">Hostel Block</label>
                         <select class="form-control" id="block" required>
                             <option value="">Select Block</option>
@@ -75,6 +80,21 @@
                     <div class="form-group">
                         <label for="phone">Phone Number</label>
                         <input type="tel" class="form-control" id="phone" pattern="[0-9]{10}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fatherName">Father's Name</label>
+                        <input type="text" class="form-control" id="fatherName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fatherPhone">Father's Phone Number</label>
+                        <input type="tel" class="form-control" id="fatherPhone" pattern="[0-9]{10}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="permanentAddress">Permanent Address</label>
+                        <input type="text" class="form-control" id="permanentAddress" required>
                     </div>
 
                     <button type="submit" class="btn btn-primary w-100">Save Profile</button>
@@ -143,14 +163,17 @@
                 const existingData = JSON.parse(localStorage.getItem('userData') || '{}');
 
                 const formData = {
+                    email: user.email,
+                    name: existingData.name || user.displayName || '',
+                    uid: user.uid,
+                    studentId: document.getElementById('studentId').value,
                     block: document.getElementById('block').value,
                     roomNumber: document.getElementById('roomNumber').value,
                     proctorEmail: document.getElementById('proctorEmail').value,
                     phone: document.getElementById('phone').value,
-                    email: user.email,
-                    name: existingData.name || user.displayName || '',
-                    studentId: existingData.studentId || '',  // Include studentId from localStorage
-                    uid: user.uid
+                    fatherName: document.getElementById('fatherName').value,
+                    fatherPhone: document.getElementById('fatherPhone').value,
+                    permanentAddress: document.getElementById('permanentAddress').value
                 };
 
                 if (!formData.studentId) {

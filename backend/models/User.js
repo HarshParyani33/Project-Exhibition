@@ -21,9 +21,31 @@ const userSchema = new mongoose.Schema({
     phone: {
         type: String,
         required: true
+    },
+    fatherName: {
+        type: String,
+        required: true
+    },
+    fatherPhone: {
+        type: String,
+        required: true
+    },
+    permanentAddress: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    uid: {
+        type: String,
+        required: true
     }
 }, {
     timestamps: true
 });
 
-module.exports = mongoose.model('User', userSchema); 
+const UserModel = mongoose.model('User', userSchema);
+
+module.exports = UserModel; 
