@@ -127,13 +127,21 @@
                 return;
             }
 
-            const userData = JSON.parse(localStorage.getItem('userData') || '{}');
-            
-            if (userData.email === user.email && userData.block && userData.roomNumber) {
-                window.location.href = 'Student_Dashboard2.html';
-            } else {
+            // Check if the user is authenticated and retrieve their email
+            const userEmail = user.email;
+            console.log('Authenticated User Email:', userEmail); // Debugging line
+
+            // Fetch user data from your backend (MongoDB) using the email
+            const response = await fetch(`http://localhost:5000/api/users/${userEmail}`);
+            const userData = await response.json();
+
+            if (!userData.success) {
+                // If no user data is found, show the first-time login form
                 document.querySelector('.loading-screen').style.display = 'none';
                 document.querySelector('.content').style.display = 'block';
+            } else {
+                // If user data is found, redirect to the dashboard
+                window.location.href = 'Student_Dashboard2.html';
             }
         }
 
