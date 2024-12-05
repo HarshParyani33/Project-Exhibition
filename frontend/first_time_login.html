@@ -52,8 +52,13 @@
                 <h2 class="text-center mb-4">Complete Your Profile</h2>
                 <form id="firstTimeForm">
                     <div class="form-group">
-                        <label for="studentId">Student ID</label>
+                        <label for="studentId">Registration Number</label>
                         <input type="text" class="form-control" id="studentId" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Name">Name</label>
+                        <input type="text" class="form-control" id="Name" required>
                     </div>
                     
                     <div class="form-group">
@@ -64,6 +69,11 @@
                             <option value="Girls Hostel Block 2">Girls Hostel Block 2</option>
                             <option value="Boys Hostel Block 1">Boys Hostel Block 1</option>
                             <option value="Boys Hostel Block 2">Boys Hostel Block 2</option>
+                            <option value="Boys Hostel Block 3">Boys Hostel Block 3</option>
+                            <option value="Boys Hostel Block 4">Boys Hostel Block 4</option>
+                            <option value="Boys Hostel Block 5">Boys Hostel Block 5</option>
+                            <option value="Boys Hostel Block 6">Boys Hostel Block 6</option>
+                            <option value="Special">Special Block</option>
                         </select>
                     </div>
 
@@ -172,7 +182,7 @@
 
                 const formData = {
                     email: user.email,
-                    name: existingData.name || user.displayName || '',
+                    Name: existingData.name || user.displayName || '',
                     uid: user.uid,
                     studentId: document.getElementById('studentId').value,
                     block: document.getElementById('block').value,

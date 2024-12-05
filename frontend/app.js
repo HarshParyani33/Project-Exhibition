@@ -122,12 +122,12 @@ document.getElementById('firstTimeForm').addEventListener('submit', async functi
 
         const formData = {
             block: document.getElementById('block').value,
+            name: dockument.getElementById('Name').value,
             roomNumber: document.getElementById('roomNumber').value,
             proctorEmail: document.getElementById('proctorEmail').value,
             phone: document.getElementById('phone').value,
             studentId: document.getElementById('studentId').value, // Get studentId from input
             email: user.email,
-            name: existingData.name || user.displayName || '',
             uid: user.uid
         };
 
