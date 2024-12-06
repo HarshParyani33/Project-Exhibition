@@ -180,7 +180,7 @@
                 .map((announcement, index) => `
                     <div class="announcement-item">
                         <p>${announcement}</p>
-                        <button class="delete-announcement-btn" onclick="deleteAnnouncement(${index})">
+                        <button class="delete-btn" onclick="deleteAnnouncement(${index})">
                             <i class="fas fa-trash"></i>
                         </button>
                     </div>
@@ -190,11 +190,16 @@
 
         // Add delete function
         function deleteAnnouncement(index) {
+            const marquee = document.querySelector('marquee');
+            marquee.stop(); // Pause scrolling
+
             if (confirm('Are you sure you want to delete this announcement?')) {
                 announcements.splice(index, 1);
                 localStorage.setItem('announcements', JSON.stringify(announcements));
                 displayAnnouncements();
             }
+
+            marquee.start(); // Resume scrolling
         }
 
         // Modal functions
@@ -219,6 +224,43 @@
 
         // Initial display
         displayAnnouncements();
+
+        // Add styles for the delete button
+        const style = document.createElement('style');
+        style.textContent = `
+            .announcement-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 5px 10px;
+                margin: 5px 0;
+            }
+
+            .announcement-item p {
+                margin: 0;
+                flex: 1;
+                padding-right: 10px;
+            }
+
+            .delete-btn {
+                background: none;
+                border: none;
+                color: #dc3545;
+                cursor: pointer;
+                padding: 5px;
+                opacity: 0;
+                transition: opacity 0.3s;
+            }
+
+            .announcement-item:hover .delete-btn {
+                opacity: 1;
+            }
+
+            .delete-btn:hover {
+                color: #c82333;
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
