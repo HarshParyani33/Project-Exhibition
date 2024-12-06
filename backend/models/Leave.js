@@ -42,9 +42,27 @@ const leaveSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    phone: {
+        type: String,
+        required: true
+    },
+    fatherName: {
+        type: String,
+        required: true
+    },
+    fatherPhone: {
+        type: String,
+        required: true
+    },
+    permanentAddress: {
+        type: String,
+        required: true
+    },
     status: {
         type: String,
         enum: ['pending', 'approved', 'rejected'],
         default: 'pending'
     }
-}); 
+});
+
+module.exports = mongoose.model('Leave', leaveSchema); 

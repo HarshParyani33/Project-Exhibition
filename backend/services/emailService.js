@@ -24,7 +24,10 @@ class EmailService {
                 <p><strong>Reason:</strong> ${leaveRequest.reason}</p>
                 <p><strong>From:</strong> ${leaveRequest.fromDate.toLocaleDateString()} ${leaveRequest.timeFrom}</p>
                 <p><strong>To:</strong> ${leaveRequest.toDate.toLocaleDateString()} ${leaveRequest.timeTo}</p>
-                <p><strong>Parent's Contact:</strong> ${leaveRequest.parentPhone}</p>
+                <p><strong>Phone:</strong> ${leaveRequest.phone}</p>
+                <p><strong>Father's Name:</strong> ${leaveRequest.fatherName}</p>
+                <p><strong>Father's Contact:</strong> ${leaveRequest.fatherPhone}</p>
+                <p><strong>Permanent Address:</strong> ${leaveRequest.permanentAddress}</p>
                 <div style="margin-top: 20px;">
                     <a href="${process.env.FRONTEND_URL}/approve/${leaveRequest._id}" 
                        style="background-color: #4CAF50; color: white; padding: 10px 20px; text-decoration: none; margin-right: 10px;">

@@ -21,6 +21,26 @@ const leaveRequestSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    proctorEmail: {
+        type: String,
+        required: true
+    },
+    phone: {
+        type: String,
+        required: true
+    },
+    fatherName: {
+        type: String,
+        required: true
+    },
+    fatherPhone: {
+    type: String,
+    required: true
+    },
+    permanentAddress: {
+        type: String,
+        required: true
+    },
     fromDate: {
         type: Date,
         required: true
@@ -41,14 +61,6 @@ const leaveRequestSchema = new mongoose.Schema({
         type: String,
         enum: ['pending', 'approved', 'rejected'],
         default: 'pending'
-    },
-    proctorEmail: {
-        type: String,
-        required: true
-    },
-    parentPhone: {
-        type: String,
-        required: true
     },
     createdAt: {
         type: Date,
