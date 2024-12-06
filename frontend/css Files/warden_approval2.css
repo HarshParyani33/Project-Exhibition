@@ -187,9 +187,10 @@ body {
 
 /* Status Badges */
 .badge {
-    padding: 8px 12px;
+    padding: 10px 16px;
     border-radius: 20px;
-    font-weight: normal;
+    font-weight: 500;
+    font-size: 0.9rem;
 }
 
 .badge-pending {
