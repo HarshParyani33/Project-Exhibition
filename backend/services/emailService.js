@@ -15,10 +15,10 @@ class EmailService {
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: leaveRequest.proctorEmail,
-            subject: `Leave Request from ${leaveRequest.studentName}`,
+            subject: `Leave Request from ${leaveRequest.Name}`,
             html: `
                 <h2>New Leave Request</h2>
-                <p><strong>Student Name:</strong> ${leaveRequest.studentName}</p>
+                <p><strong>Student Name:</strong> ${leaveRequest.Name}</p>
                 <p><strong>Leave Type:</strong> ${leaveRequest.leaveType}</p>
                 <p><strong>Visiting Place:</strong> ${leaveRequest.visitingPlace}</p>
                 <p><strong>Reason:</strong> ${leaveRequest.reason}</p>

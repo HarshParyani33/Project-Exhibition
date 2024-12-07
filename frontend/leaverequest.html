@@ -248,7 +248,7 @@
                 const leaveData = {
                     studentEmail: localUserData.email,
                     studentId: localUserData.studentId,
-                    studentName: localUserData.name || localUserData.displayName, // Add student name
+                    Name: userDataFromDB.data.Name, // Add student name
                     studentBlock: userDataFromDB.data.block, // Add hostel block
                     studentRoomNumber: userDataFromDB.data.roomNumber, // Add room number
                     proctorEmail: userDataFromDB.data.proctorEmail,

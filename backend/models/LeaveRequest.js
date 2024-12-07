@@ -5,7 +5,7 @@ const leaveRequestSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    studentName: {
+    Name: {
         type: String,
         required: true
     },
