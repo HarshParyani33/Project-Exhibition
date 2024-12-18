@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
 const userRoutes = require('./routes/userRoutes'); // Adjust the path as necessary
+const complaintRoutes = require('./routes/complaintRoutes');
 
 const app = express();
 
@@ -25,6 +26,7 @@ mongoose.connect('mongodb+srv://hostelconnectvit:Harsh%40123@cluster0.jkw2v.mong
         console.error('MongoDB connection error:', err);
     });
 
+
 // Add this before your routes
 app.use((req, res, next) => {
     console.log('Request:', {
@@ -35,9 +37,10 @@ app.use((req, res, next) => {
     next();
 });
 
-// Routes
+// Other Routes
 app.use('/api/leave', require('./routes/leaveRoutes'));
 app.use('/api/users', userRoutes);
+app.use('/api/complaints', complaintRoutes);
 
 // Add detailed error handling
 app.use((err, req, res, next) => {

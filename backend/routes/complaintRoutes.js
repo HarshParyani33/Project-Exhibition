@@ -1,22 +1,88 @@
-const express = require("express");
-const complaintRoutes = express.Router();
-const {
-  postComplaints,
-  putComplaintsByid,
-  getAllComplaintsByUser,
-  getUserType,
-  getUserDetails,
-  deleteComplaints
-} = require("../controller/complaintController");
-const { authorizeWarden } = require("../middleware/auth");
+const express = require('express');
+const router = express.Router();
+const Complaint = require('../models/Complaint');
 
-complaintRoutes.post("/complaints", postComplaints);
-complaintRoutes.get("/complaints", authorizeWarden, getAllComplaintsByUser);
-// complaintRoutes.get("/complaints", getAllComplaintsByUser);
-complaintRoutes.post("/complaints/:id", putComplaintsByid);
-complaintRoutes.delete("/complaints/:id", deleteComplaints);
+// Submit a new complaint
+router.post('/submit', async (req, res) => {
+    try {
+        const { subject, location, details, studentEmail } = req.body;
+        
+        const newComplaint = new Complaint({
+            subject,
+            location,
+            details,
+            studentEmail
+        });
 
-complaintRoutes.get("/userType", getUserType);
-complaintRoutes.get("/userDetails/:id", getUserDetails);
+        const savedComplaint = await newComplaint.save();
+        
+        res.status(201).json({
+            success: true,
+            data: savedComplaint
+        });
+    } catch (error) {
+        console.error('Error submitting complaint:', error);
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+});
 
-module.exports = complaintRoutes;
+// Get complaints by student email
+router.get('/student/:email', async (req, res) => {
+    try {
+        const complaints = await Complaint.find({ studentEmail: req.params.email })
+                                        .sort({ dateSubmitted: -1 });
+        res.json({
+            success: true,
+            complaints
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+});
+
+// Get all complaints (for admin/faculty)
+router.get('/all', async (req, res) => {
+    try {
+        const complaints = await Complaint.find()
+            .sort({ dateSubmitted: -1 }); // Most recent first
+        res.json({
+            success: true,
+            complaints
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+});
+
+// Update complaint status
+router.patch('/status/:id', async (req, res) => {
+    try {
+        const { status } = req.body;
+        const complaint = await Complaint.findByIdAndUpdate(
+            req.params.id,
+            { status },
+            { new: true }
+        );
+        
+        res.json({
+            success: true,
+            data: complaint
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+});
+
+module.exports = router;

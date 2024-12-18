@@ -80,7 +80,7 @@
 
       <section class="complaint-form">
         <h3>Submit Complaint</h3>
-        <form>
+        <form id="complaintForm">
           <label for="subject">Complaint Subject</label>
           <select id="subject" required>
             <option value="" disabled selected>Select complaint subject</option>
@@ -126,5 +126,7 @@
     button.textContent = details.classList.contains('active') ? 'Hide Details' : 'Details';
   }
   </script>
+
+  <script src="js/submitComplaint.js"></script>
 </body>
 </html>

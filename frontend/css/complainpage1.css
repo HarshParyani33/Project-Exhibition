@@ -1,0 +1,81 @@
+/* Add these styles to your existing CSS */
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.status-badge.pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status-badge.in-progress {
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+.status-badge.resolved {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.complaint-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.complaint-main {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.complaint-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.complaint-id {
+    font-weight: 600;
+    color: #666;
+}
+
+.complaint-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.complaint-details.active {
+    max-height: 500px;
+    border-top: 1px solid #eee;
+}
+
+.details-content {
+    padding: 1rem;
+}
+
+.details-toggle {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.details-toggle:hover {
+    background: #0056b3;
+}
+
+.details-toggle.active {
+    background: #dc3545;
+} 
