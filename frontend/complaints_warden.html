@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hostel Complaint System</title>
-  <link rel="stylesheet" href="css Files\wardencomplaint.css">
+  <link rel="stylesheet" href="css Files/wardencomplaint.css">
 </head>
 <body>
   <header>
@@ -12,7 +12,7 @@
     <div class="nav-buttons">
         <button class="profile-btn">
             <a href="wardenprofile.html">
-                <img src="images\Profile.png" alt="Profile" class="profile-icon">
+                <img src="images/Profile.png" alt="Profile" class="profile-icon">
             </a>
         </button>
         <button class="logout-btn">Logout</button>
@@ -21,63 +21,10 @@
   
   <main>
     <section class="complaints">
-      <h2 class="complaints-heading">Complaints <span class="new-complaints-badge">3</span></h2>
+      <h2 class="complaints-heading">Complaints <span class="new-complaints-badge" id="complaint-count">0</span></h2>
       
-      <div class="complaints-container">
-        <!-- Mess Complaints -->
-        <div class="complaint-category">
-          <h3>Mess Issues <span class="category-badge">2</span></h3>
-          <div class="complaint-card" id="complaint-1">
-            <span class="new-dot"></span>
-            <h4>Poor Food Quality</h4>
-            <p>Created on Dec 15, 2023</p>
-            <p>The food quality has degraded significantly in the past week.</p>
-            <div class="buttons">
-              <button class="status-btn not-completed" onclick="updateStatus('complaint-1', 'Completed')">Not Completed</button>
-              <button class="delete-btn" onclick="deleteComplaint('complaint-1')">Delete</button>
-            </div>
-          </div>
-          <!-- More mess complaints can be added here -->
-        </div>
-
-        <!-- Electrical Issues -->
-        <div class="complaint-category">
-          <h3>Electrical Issues <span class="category-badge">1</span></h3>
-          <div class="complaint-card" id="complaint-2">
-            <span class="new-dot"></span>
-            <h4>Switch not working (Room No. L block - 27)</h4>
-            <p>Created on Dec 15, 2023</p>
-            <p>I am facing issues with the switch in my room. It is not functioning correctly.</p>
-            <div class="buttons">
-              <button class="status-btn not-completed" onclick="updateStatus('complaint-2', 'Completed')">Not Completed</button>
-              <button class="delete-btn" onclick="deleteComplaint('complaint-2')">Delete</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Water Issues -->
-        <div class="complaint-category">
-          <h3>Water Issues <span class="category-badge">0</span></h3>
-          <!-- Complaints will be dynamically added here -->
-        </div>
-
-        <!-- Internet & WiFi -->
-        <div class="complaint-category">
-          <h3>Internet & WiFi <span class="category-badge">0</span></h3>
-          <!-- Complaints will be dynamically added here -->
-        </div>
-
-        <!-- Room Maintenance -->
-        <div class="complaint-category">
-          <h3>Room Maintenance <span class="category-badge">0</span></h3>
-          <!-- Complaints will be dynamically added here -->
-        </div>
-
-        <!-- Other Issues -->
-        <div class="complaint-category">
-          <h3>Other Issues <span class="category-badge">0</span></h3>
-          <!-- Complaints will be dynamically added here -->
-        </div>
+      <div class="complaints-container" id="complaints-container">
+        <!-- Complaint categories will be populated here -->
       </div>
     </section>
     <div class="back-button-container">
@@ -85,6 +32,77 @@
     </div>
   </main>
 
-  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        try {
+            const response = await fetch('http://localhost:5000/api/complaints/all');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const complaints = await response.json();
+            document.getElementById('complaint-count').innerText = complaints.length;
+            console.log('Complaints:', complaints);
+            renderComplaints(complaints);
+        } catch (error) {
+            console.error('Error fetching complaints:', error);
+        }
+    });
+
+    function renderComplaints(complaints) {
+        const container = document.getElementById('complaints-container');
+        const categories = {
+            'room maintenance': [],
+            'internet': [],
+            'mess': [],
+            'water': [],
+            'electrical': [],
+            'other issues': [] // Fallback for unknown categories
+        };
+
+        // Categorize complaints based on subject
+        complaints.forEach(complaint => {
+            // Lowercase the subject for comparison
+            const subjectKey = complaint.subject.toLowerCase();
+            
+            // Ensure the subject exists in the categories object
+            if (categories[subjectKey]) {
+                categories[subjectKey].push(complaint);
+            } else {
+                categories['other issues'].push(complaint); // Fallback for unknown subjects
+            }
+        });
+
+        // Render each category
+        for (const [category, items] of Object.entries(categories)) {
+            const categoryDiv = document.createElement('div');
+            categoryDiv.className = 'complaint-category';
+            categoryDiv.innerHTML = `<h3>${category.charAt(0).toUpperCase() + category.slice(1)} <span class="category-badge">${items.length}</span></h3>`;
+            
+            items.forEach(item => {
+                const complaintCard = createComplaintCard(item);
+                categoryDiv.appendChild(complaintCard);
+            });
+            container.appendChild(categoryDiv);
+        }
+    }
+
+    function createComplaintCard(complaint) {
+        const card = document.createElement('div');
+        card.className = 'complaint-card';
+        card.innerHTML = `
+            <span class="new-dot"></span>
+            <h4>${complaint.subject}</h4>
+            <p>Location: ${complaint.location}</p>
+            <p>Details: ${complaint.details}</p>
+            <p>Status: ${complaint.status}</p>
+            <p>Submitted on: ${new Date(complaint.dateSubmitted).toLocaleDateString()}</p>
+            <div class="buttons">
+                <button class="status-btn not-completed" onclick="updateStatus('${complaint._id}', 'Completed')">Not Completed</button>
+                <button class="delete-btn" onclick="deleteComplaint('${complaint._id}')">Delete</button>
+            </div>
+        `;
+        return card;
+    }
+  </script>
 </body>
 </html>

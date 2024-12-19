@@ -46,15 +46,11 @@ router.get('/student/:email', async (req, res) => {
     }
 });
 
-// Get all complaints (for admin/faculty)
+// Get all complaints for admin/faculty
 router.get('/all', async (req, res) => {
     try {
-        const complaints = await Complaint.find()
-            .sort({ dateSubmitted: -1 }); // Most recent first
-        res.json({
-            success: true,
-            complaints
-        });
+        const complaints = await Complaint.find().sort({ dateSubmitted: -1 });
+        res.json(complaints);
     } catch (error) {
         res.status(500).json({
             success: false,
@@ -77,6 +73,19 @@ router.patch('/status/:id', async (req, res) => {
             success: true,
             data: complaint
         });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+});
+
+// Get all complaints for warden view
+router.get('/warden', async (req, res) => {
+    try {
+        const complaints = await Complaint.find().sort({ dateSubmitted: -1 });
+        res.json(complaints);
     } catch (error) {
         res.status(500).json({
             success: false,
