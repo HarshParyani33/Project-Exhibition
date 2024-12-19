@@ -97,11 +97,18 @@
             <p>Status: ${complaint.status}</p>
             <p>Submitted on: ${new Date(complaint.dateSubmitted).toLocaleDateString()}</p>
             <div class="buttons">
-                <button class="status-btn not-completed" onclick="updateStatus('${complaint._id}', 'Completed')">Not Completed</button>
+                <button class="status-btn completed" onclick="confirmUpdateStatus('${complaint._id}', 'Completed')">Completed</button>
                 <button class="delete-btn" onclick="deleteComplaint('${complaint._id}')">Delete</button>
             </div>
         `;
         return card;
+    }
+
+    function confirmUpdateStatus(complaintId, newStatus) {
+        const confirmation = confirm("Are you sure this complaint is completed?");
+        if (confirmation) {
+            updateStatus(complaintId, newStatus);
+        }
     }
   </script>
 </body>

@@ -27,28 +27,8 @@
       <section class="complaints-section">
         <h2>Complaints</h2>
         
-        <div class="complaints-list">
-          <!-- Example of a complaint card -->
-          <div class="complaint-card">
-            <div class="complaint-main">
-              <div class="complaint-info">
-                <span class="complaint-id">#CM001</span>
-                <span class="status-badge pending">Pending</span>
-              </div>
-              <button class="details-toggle" onclick="toggleDetails(this)">Details</button>
-            </div>
-            
-            <div class="complaint-details">
-              <div class="details-content">
-                <p><strong>Subject:</strong> Room Maintenance</p>
-                <p><strong>Date Submitted:</strong> March 15, 2024</p>
-                <p><strong>Location:</strong> Block A, Room 203</p>
-                <p><strong>Description:</strong> Broken window handle needs replacement</p>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Add more complaint cards as needed -->
+        <div class="complaints-list" id="complaintsList">
+          <!-- Complaints will be dynamically inserted here -->
         </div>
       </section>
 
@@ -119,6 +99,47 @@
     // Update button text
     button.textContent = details.classList.contains('active') ? 'Hide Details' : 'Details';
   }
+
+  // Fetch complaints from the database (example API endpoint)
+  async function fetchComplaints() {
+    try {
+      const response = await fetch('/api/complaints'); // Adjust the endpoint as needed
+      const complaints = await response.json();
+      const complaintsList = document.getElementById('complaintsList');
+      
+      // Clear existing complaints
+      complaintsList.innerHTML = '';
+
+      // Render each complaint
+      complaints.forEach(complaint => {
+        const complaintCard = `
+          <div class="complaint-card">
+            <div class="complaint-main">
+              <div class="complaint-info">
+                <span class="complaint-id">${complaint.id}</span>
+                <span class="status-badge ${complaint.status.toLowerCase()}">${complaint.status}</span>
+              </div>
+              <button class="details-toggle" onclick="toggleDetails(this)">Details</button>
+            </div>
+            <div class="complaint-details">
+              <div class="details-content">
+                <p><strong>Subject:</strong> ${complaint.subject}</p>
+                <p><strong>Date Submitted:</strong> ${complaint.dateSubmitted}</p>
+                <p><strong>Location:</strong> ${complaint.location}</p>
+                <p><strong>Description:</strong> ${complaint.description}</p>
+              </div>
+            </div>
+          </div>
+        `;
+        complaintsList.innerHTML += complaintCard;
+      });
+    } catch (error) {
+      console.error('Error fetching complaints:', error);
+    }
+  }
+
+  // Call the function to fetch complaints when the page loads
+  window.onload = fetchComplaints;
   </script>
 
   <script src="js/submitComplaint.js"></script>

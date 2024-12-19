@@ -51,7 +51,7 @@ async function loadComplaints() {
             console.error('Error fetching complaints:', data.message);
         }
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Error fetching complaints:', error);
     }
 }
 
@@ -66,7 +66,7 @@ function displayComplaints(complaints) {
                 <div class="complaint-main">
                     <div class="complaint-info">
                         <span class="complaint-id">#CM${String(index + 1).padStart(3, '0')}</span>
-                        <span class="status-badge ${complaint.status}">${complaint.status}</span>
+                        <span class="status-badge ${complaint.status.toLowerCase()}">${complaint.status}</span>
                     </div>
                     <button class="details-toggle" onclick="toggleDetails(this)">Details</button>
                 </div>

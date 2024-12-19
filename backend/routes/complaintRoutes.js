@@ -50,7 +50,10 @@ router.get('/student/:email', async (req, res) => {
 router.get('/all', async (req, res) => {
     try {
         const complaints = await Complaint.find().sort({ dateSubmitted: -1 });
-        res.json(complaints);
+        res.json({
+            success: true,
+            complaints
+        });
     } catch (error) {
         res.status(500).json({
             success: false,
