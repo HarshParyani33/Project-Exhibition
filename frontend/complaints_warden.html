@@ -39,8 +39,9 @@
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            const complaints = await response.json();
-            console.log('Fetched complaints:', complaints);
+            const data = await response.json();
+            console.log('Fetched complaints:', data);
+            const complaints = data.complaints;
             document.getElementById('complaint-count').innerText = complaints.length;
             renderComplaints(complaints);
         } catch (error) {
