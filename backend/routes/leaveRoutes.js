@@ -26,10 +26,10 @@ router.post('/request', async (req, res) => {
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: leaveData.proctorEmail, // Send to the proctor's email
-            subject: `Leave Request from ${leaveData.studentName}`,
+            subject: `Leave Request from ${leaveData.Name}`,
             html: `
                 <h2>New Leave Request</h2>
-                <p><strong>Student Name:</strong> ${leaveData.studentName}</p>
+                <p><strong>Student Name:</strong> ${leaveData.Name}</p>
                 <p><strong>Student Email:</strong> ${leaveData.studentEmail}</p>
                 <p><strong>Leave Type:</strong> ${leaveData.leaveType}</p>
                 <p><strong>Visiting Place:</strong> ${leaveData.visitingPlace}</p>
