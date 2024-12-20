@@ -40,8 +40,8 @@
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const complaints = await response.json();
+            console.log('Fetched complaints:', complaints);
             document.getElementById('complaint-count').innerText = complaints.length;
-            console.log('Complaints:', complaints);
             renderComplaints(complaints);
         } catch (error) {
             console.error('Error fetching complaints:', error);
@@ -61,10 +61,8 @@
 
         // Categorize complaints based on subject
         complaints.forEach(complaint => {
-            // Lowercase the subject for comparison
-            const subjectKey = complaint.subject.toLowerCase();
-            
-            // Ensure the subject exists in the categories object
+            console.log('Processing complaint:', complaint);
+            const subjectKey = complaint.subject ? complaint.subject.toLowerCase() : 'other issues';
             if (categories[subjectKey]) {
                 categories[subjectKey].push(complaint);
             } else {
