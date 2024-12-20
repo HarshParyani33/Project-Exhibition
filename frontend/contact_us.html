@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Hostel Connect</title>
+    <link rel="stylesheet" href="css Files/styles.css"> <!-- Link to your CSS file -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Center text in the container */
+        }
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        .contact-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow for the wrapper */
+            padding: 20px; /* Padding for the wrapper */
+            border-radius: 8px; /* Rounded corners for the wrapper */
+            background-color: #f9f9f9; /* Light background for the wrapper */
+        }
+        .contact-box {
+            margin: 10px 0; /* Margin between boxes */
+            padding: 30px; /* Increased padding for larger boxes */
+            border: 1px solid #007bff;
+            border-radius: 8px;
+            background-color: #e9f5ff;
+            transition: background-color 0.3s;
+            min-height: 120px; /* Set a minimum height for the boxes */
+        }
+        .contact-box:hover {
+            background-color: #d0e7ff;
+        }
+        .contact-box h2 {
+            margin: 0;
+            font-size: 22px; /* Increased font size */
+            color: #0056b3;
+        }
+        .contact-box p {
+            margin: 5px 0;
+            color: #555;
+            font-size: 18px; /* Increased font size */
+        }
+        .back-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+        .contact-image {
+            width: 100%; /* Make the image responsive */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 10px; /* Rounded corners for the image */
+            margin-bottom: 20px; /* Space below the image */
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            .back-button {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="images/contact_us_image.jpg" alt="Contact Us" class="contact-image"> <!-- Add your image here -->
+        <h1>Contact Us</h1>
+
+        <div class="contact-wrapper">
+            <div class="contact-box">
+                <h2>Have Questions?</h2>
+                <p>Shoot us a mail at:</p>
+                <p><strong><a href="mailto:hostelconnectvit@gmail.com">hostelconnectvit@gmail.com</a></strong></p>
+            </div>
+
+            <div class="contact-box">
+                <h2>Give us a call.</h2>
+                <p><strong>+919382974XXX</strong></p>
+            </div>
+        </div>
+
+        <a href="frontend/login-2.html" class="back-button">Back to Login</a>
+    </div>
+</body>
+</html> 
