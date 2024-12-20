@@ -47,6 +47,32 @@
             text-align: center;
             margin-bottom: 20px;
         }
+        .back-button {
+            background-color: #4CAF50; /* Green background */
+            border: none; /* Remove borders */
+            color: white; /* White text */
+            padding: 15px 32px; /* Padding */
+            text-align: center; /* Centered text */
+            text-decoration: none; /* No underline */
+            display: inline-block; /* Inline-block */
+            font-size: 16px; /* Font size */
+            margin: 4px 2px; /* Margin */
+            cursor: pointer; /* Pointer cursor on hover */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Shadow for 3D effect */
+            transition: all 0.3s ease; /* Smooth transition */
+        }
+
+        .back-button:hover {
+            background-color: #45a049; /* Darker green on hover */
+            transform: translateY(-2px); /* Lift effect */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover */
+        }
+
+        .back-button:active {
+            transform: translateY(1px); /* Pressed effect */
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); /* Reset shadow */
+        }
     </style>
 </head>
 <body>
@@ -68,6 +94,10 @@
                 <h2>Give us a call.</h2>
                 <p>Phone: +919382974XXX</p>
             </div>
+        </div>
+
+        <div class="row">
+            <button class="back-button" onclick="window.location.href='login-2.html'" style="margin-top: 20px;">Back to Login Page</button>
         </div>
     </div>
 </body>
