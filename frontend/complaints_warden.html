@@ -109,6 +109,45 @@
             updateStatus(complaintId, newStatus);
         }
     }
+
+    function updateStatus(complaintId, newStatus) {
+        fetch(`http://localhost:5000/api/complaints/${complaintId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ status: newStatus }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Status updated:', data);
+            // Optionally, refresh the complaints list or update the UI accordingly
+        })
+        .catch(error => {
+            console.error('Error updating status:', error);
+        });
+    }
+
+    function deleteComplaint(complaintId) {
+        fetch(`http://localhost:5000/api/complaints/${complaintId}`, {
+            method: 'DELETE',
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            console.log('Complaint deleted:', complaintId);
+            // Optionally, refresh the complaints list or remove the complaint from the UI
+        })
+        .catch(error => {
+            console.error('Error deleting complaint:', error);
+        });
+    }
   </script>
 </body>
 </html>
